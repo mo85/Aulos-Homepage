@@ -3,12 +3,48 @@
 <head>
   <title>Aulos</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :all %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body onload="DynarchMenu.setup('header-main-menu', { shadows: false, electric: true }); DynarchMenu.setup('header-right-menu', { shadows: false, electric: true });">
 
-<%= yield %>
+<div id="page">
+	
+	<div id="header">
+		Titel der Home Page
+	</div>
+	
+	<div id="menu-container">
+		
+		<div class="left">
+			<ul id="header-main-menu">
+				<li class="first">Home</li>
+				<li>Konzerte</li>
+				<li>Dirigenten</li>
+				<li>Kontakt
+					<ul>
+						<li>Vorstand</li>
+						<li>Gästebuch</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="right">
+			<ul id="header-right-menu">
+				<li class="first">Login</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="content">
+		
+		<%= yield %>
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
 
 </body>
 </html>
