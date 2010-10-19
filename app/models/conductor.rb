@@ -1,0 +1,5 @@
+class Conductor < Person
+  
+  
+  
+end
