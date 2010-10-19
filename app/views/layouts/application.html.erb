@@ -28,12 +28,14 @@
 					</ul>
 				</li>
 				<li><%= link_to "CD-Bestellen", orders_path %></li>
+				<% if permitted_to? :manage, :users %>
 				<li>
 					Admin
 					<ul>
 						<li><%= link_to "Benutzer", users_path %></li>
 					</ul>
 					</li>
+				<% end %>
 			</ul>
 		</div>
 		
@@ -59,6 +61,12 @@
 			<% if flash[:notice] %>
 				<div id="notice">
 					<%= flash[:notice] -%>
+				</div>
+			<% end %>
+			
+			<% if flash[:error] %>
+				<div id="error">
+					<%= flash[:error] -%>
 				</div>
 			<% end %>
 			

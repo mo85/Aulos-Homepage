@@ -1,4 +1,6 @@
 class PlaysController < ApplicationController
+  filter_access_to :all
+  
   # GET /plays
   # GET /plays.xml
   def index

@@ -1,4 +1,6 @@
 class PartsController < ApplicationController
+  filter_access_to :all
+  
   # GET /parts
   # GET /parts.xml
   def index

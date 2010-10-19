@@ -1,16 +1,23 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-  
-  validates_presence_of :name
-  validates_uniqueness_of :name
-  
+
   attr_accessor :password_confirmation
-  validates_confirmation_of :password
-  
-  validate :password_non_blank
   
   default_scope order('name')
+  
+  validates_presence_of     :name
+  validates_uniqueness_of   :name
+  validates_confirmation_of :password
+  validate                  :password_non_blank
+
+  def role_symbols
+    roles = [:user]
+    if is_admin
+      roles = [:admin]
+    end
+    roles
+  end
   
   def self.authenticate(name, password)
     user = self.find_by_name(name)

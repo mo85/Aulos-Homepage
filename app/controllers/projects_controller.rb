@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  filter_access_to :all
+  
   # GET /projects
   # GET /projects.xml
   def index

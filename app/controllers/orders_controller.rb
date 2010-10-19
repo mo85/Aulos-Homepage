@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  filter_access_to :all
+  
   # GET /orders
   # GET /orders.xml
   def index

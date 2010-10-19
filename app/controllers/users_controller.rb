@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  filter_access_to :all
+  
   # GET /users
   # GET /users.xml
   def index

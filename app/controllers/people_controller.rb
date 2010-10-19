@@ -1,4 +1,6 @@
 class PeopleController < ApplicationController
+  filter_access_to :all
+  
   # GET /people
   # GET /people.xml
   def index
