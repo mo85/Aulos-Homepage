@@ -1,38 +1,35 @@
 <%= form_for(@order, :html => { :class => "default"} ) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-      <ul>
-      <% @order.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<%= render "shared/error_messages", :target => @order %>
 
   <div>
+		<%= mark_required(@order, :firstname) %>
     <%= f.label :firstname %>
     <%= f.text_field :firstname %>
   </div>
   <div>
+		<%= mark_required(@order, :firstname) %>
     <%= f.label :lastname %>
     <%= f.text_field :lastname %>
   </div>
   <div>
+		<%= mark_required(@order, :firstname) %>
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div>
+		<%= mark_required(@order, :firstname) %>
     <%= f.label "Street and Number" %>
     <%= f.text_field :street %>
   </div>
 
   <div>
+		<%= mark_required(@order, :firstname) %>
     <%= f.label :zip %>
     <%= f.text_field :zip %>
   </div>
   <div>
+		<%= mark_required(@order, :firstname) %>
     <%= f.label :city %>
     <%= f.text_field :city %>
   </div>
