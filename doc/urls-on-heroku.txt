@@ -1,0 +1,5 @@
+Creating fierce-moon-28.... done
+
+Created http://fierce-moon-28.heroku.com/ 
+
+git@heroku.com:fierce-moon-28.git
