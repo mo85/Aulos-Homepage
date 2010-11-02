@@ -9,7 +9,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem "declarative_authorization", :git => "git://github.com/stffn/declarative_authorization.git"
 
-gem 'pg'
+#gem 'pg'
+
 
 
 # Use unicorn as the web server
