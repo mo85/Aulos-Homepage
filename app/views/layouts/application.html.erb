@@ -32,8 +32,9 @@
 				<li>
 					Admin
 					<ul>
-						<li><%= link_to "Benutzer", users_path %></li>
+						<li><%= link_to "Mitglieder", people_path %></li>
 						<li><%= link_to "Instrumente", instruments_path %></li>
+						<li><%= link_to "Benutzer Accounts", users_path %></li>
 					</ul>
 					</li>
 				<% end %>
@@ -56,6 +57,14 @@
 	<div id="content">
 		
 		<div class="left-column">
+			<% if yield :submenu %>
+			
+			<ul class="side-menu">
+				<%= yield :submenu %>
+			</ul>
+			
+			<% end %>
+			
 		</div>
 		
 		<div class="right-column">

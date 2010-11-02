@@ -15,7 +15,10 @@
 <h2>Besetzung</h2>
 
 
-<p>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
-</p>
+<% content_for :submenu do %>
+
+	<li><%= link_to 'Anpassen', edit_project_path(@project) %></li>
+	<li><%= link_to "Dirigent Hinzufügen" %></li>
+	<li><%= link_to 'Projekt Übersicht', projects_path %></li>
+		
+<% end %>

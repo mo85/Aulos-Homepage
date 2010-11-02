@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 
   has_many :plays
+  has_one :conductor
   
   validates_presence_of :year
   validates_numericality_of :year

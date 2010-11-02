@@ -1,6 +1,6 @@
 authorization do
   role :guest do
-    has_permission_on :projects, :to => [:read]
+    has_permission_on :projects, :people, :to => [:read]
     has_permission_on :orders, :to => [:read, :create, :new]
     
   end
@@ -10,7 +10,7 @@ authorization do
   end
   
   role :admin do
-    has_permission_on [:users, :orders, :projects, :instruments], :to => [:read, :manage]
+    has_permission_on [:people, :users, :orders, :projects, :instruments], :to => [:read, :manage]
     includes :user
   end
 end
