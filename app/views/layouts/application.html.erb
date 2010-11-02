@@ -33,6 +33,7 @@
 					Admin
 					<ul>
 						<li><%= link_to "Benutzer", users_path %></li>
+						<li><%= link_to "Instrumente", instruments_path %></li>
 					</ul>
 					</li>
 				<% end %>
@@ -58,18 +59,6 @@
 		</div>
 		
 		<div class="right-column">
-			<% if flash[:notice] %>
-				<div id="notice">
-					<%= flash[:notice] -%>
-				</div>
-			<% end %>
-			
-			<% if flash[:error] %>
-				<div id="error">
-					<%= flash[:error] -%>
-				</div>
-			<% end %>
-			
 			<%= yield %>
 		</div>
 	</div>

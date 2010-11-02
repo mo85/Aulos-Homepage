@@ -1,4 +1,6 @@
 Aulos::Application.routes.draw do
+  resources :instruments
+
   resources :users
 
   resources :orders
@@ -10,7 +12,7 @@ Aulos::Application.routes.draw do
   resources :plays
 
   resources :projects
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

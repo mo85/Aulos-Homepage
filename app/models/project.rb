@@ -4,9 +4,10 @@ class Project < ActiveRecord::Base
   
   validates_presence_of :year
   validates_numericality_of :year
+  
+  default_scope order("year DESC")
 
   def self.current_project
-    Project.last
   end
   
   def to_s

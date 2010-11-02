@@ -1,3 +1,6 @@
+# encoding: utf-8 
+
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -5,7 +8,6 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-
 users = User.create([
   { :name => "mark.odermatt", 
     :salt => "1234", 
@@ -14,4 +16,12 @@ users = User.create([
   { :name => "aulosmember", 
     :salt => "5678",
     :hashed_password => User.encrypted_password('taerbinu', "5678")}
+])
+
+instruments = Instrument.create([
+  { :name => "Klarinette", :family => 0 },
+  { :name => "Flöte", :family => 0 },
+  { :name => "Trompete", :family => 1 },
+  { :name => "Horn", :family => 1},
+  { :name => "Saxophon", :family => 0}
 ])

@@ -1,0 +1,28 @@
+<%= form_for(@instrument, :html => { :class => :default }) do |f| %>
+  <% if @instrument.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instrument.errors.count, "error") %> prohibited this instrument from being saved:</h2>
+
+      <ul>
+      <% @instrument.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+	<div>
+		<%= f.label :family %>
+		<%= f.select :family, Instrument::FAMILIES.collect{ |v, k| [k, v]}, prompt_for_selects %>
+	</div>
+	
+	
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

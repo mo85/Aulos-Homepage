@@ -10,7 +10,7 @@ authorization do
   end
   
   role :admin do
-    has_permission_on [:users, :orders], :to => [:read, :manage]
+    has_permission_on [:users, :orders, :projects, :instruments], :to => [:read, :manage]
     includes :user
   end
 end
