@@ -1,6 +1,8 @@
 class Project < ActiveRecord::Base
 
   has_many :plays
+  has_many :members, :class_name => "Membership"
+  
   has_one :conductor
   
   validates_presence_of :year

@@ -1,6 +1,15 @@
 class PeopleController < ApplicationController
   filter_access_to :all
   
+  def autocomplete
+    name = "%#{params[:query]}%"
+    @people = Person.where("firstname like ? OR lastname like ?", name, name)
+
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   # GET /people
   # GET /people.xml
   def index
@@ -26,7 +35,7 @@ class PeopleController < ApplicationController
   # GET /people/new
   # GET /people/new.xml
   def new
-    @person = Person.new
+    @person = Person.new(:country => "Switzerland")
 
     respond_to do |format|
       format.html # new.html.erb

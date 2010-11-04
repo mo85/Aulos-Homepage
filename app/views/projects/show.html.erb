@@ -14,11 +14,17 @@
 
 <h2>Besetzung</h2>
 
+<ul>
+<% @project.members.each do |m| %>
+	<li><%= "#{m.person} - #{m.instrument}" %></li>
+<% end %>
+</ul>
 
 <% content_for :submenu do %>
 
 	<li><%= link_to 'Anpassen', edit_project_path(@project) %></li>
 	<li><%= link_to "Dirigent Hinzufügen" %></li>
+	<li><%= link_to "Mitglied Hinzufügen", add_member_project_path(@project) %></li>
 	<li><%= link_to 'Projekt Übersicht', projects_path %></li>
 		
 <% end %>

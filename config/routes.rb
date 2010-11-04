@@ -7,11 +7,21 @@ Aulos::Application.routes.draw do
 
   resources :parts
 
-  resources :people
+  resources :people do
+    collection do
+      get "autocomplete"
+    end
+  end
 
   resources :plays
 
-  resources :projects
+  resources :projects do
+    member do
+      get "add_member"
+      post "save_member"
+      delete "remove_member"
+    end
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

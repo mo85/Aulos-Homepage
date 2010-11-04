@@ -8,4 +8,8 @@ class Instrument < ActiveRecord::Base
     ::FAMILIES[self.family]
   end
   
+  def to_s
+    "#{name}"
+  end
+  
 end

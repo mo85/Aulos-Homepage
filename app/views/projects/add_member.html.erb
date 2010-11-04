@@ -1,0 +1,27 @@
+<h1>Mitglied Hinzufügen</h2>
+	
+<%= form_tag(save_member_project_path(@project), :class => :default ) do %>
+
+<div>
+	<%= label_tag :query, "Name" %>
+	<%= text_field_tag :query %>
+	<div class="autocomplete" id="membership_choices" style="display: none"></div>
+</div>
+
+<div>
+	<%= label_tag "membership[instrument]", "Instrument" %>
+	<%= select :membership, :instrument_id, Instrument.all.collect{ |i| [i.name, i.id]}, prompt_for_selects %>
+</div>
+
+<div>
+	<%= submit_tag "Speichern" %>
+</div>
+
+<% end %>
+
+
+<script type="text/javascript" charset="utf-8">
+	new Ajax.Autocompleter('query','membership_choices', '<%= autocomplete_people_path %>');
+</script>
+
+

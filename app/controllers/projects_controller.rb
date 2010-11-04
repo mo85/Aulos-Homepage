@@ -1,3 +1,4 @@
+# encoding: utf-8 
 class ProjectsController < ApplicationController
   filter_access_to :all
   
@@ -68,6 +69,43 @@ class ProjectsController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+  
+  def add_member
+    @project = Project.find params[:id]
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  def save_member
+    name = params[:query].strip.split
+    firstname = name[0]
+    lastname = name[1]
+    
+    person = Person.find_by_firstname_and_lastname(firstname, lastname)
+    @project = Project.find params[:id]
+    
+    respond_to do |format|
+      if person
+        membership = Membership.create(:person => person, :project => @project, :instrument_id => params[:membership][:instrument_id])
+        flash[:notice] = "Die Person #{person} wurde hinzugefügt."
+        format.html { redirect_to @project }
+      else
+        flash[:notice] = "Die Person wurde nicht gefunden."
+        format.html { render :action => "add_member" }
+      end
+
+    end
+  end
+  
+  def remove_member
+    @project = Project.find params[:id]
+    
+    respond_to do |format|
+      format.html { redirect_to @project }
     end
   end
 
