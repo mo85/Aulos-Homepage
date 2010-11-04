@@ -1,5 +1,6 @@
 # encoding: utf-8 
 
+if User.count == 0
 users = User.create([
   { :name => "mark.odermatt", 
     :salt => "1234", 
@@ -9,7 +10,9 @@ users = User.create([
     :salt => "5678",
     :hashed_password => User.encrypted_password('taerbinu', "5678")}
 ])
+end
 
+if Instrument.count == 0
 instruments = Instrument.create([
   { :name => "Klarinette", :family => 0 },
   { :name => "Flöte", :family => 0 },
@@ -17,13 +20,17 @@ instruments = Instrument.create([
   { :name => "Horn", :family => 1},
   { :name => "Saxophon", :family => 0}
 ])
+end
 
+if Project.count == 0
 projects = Project.create([
   { :title => "Aulos 2010", :year => 2010 },
   { :title => "Aulos 2009", :year => 2009 },
   { :title => "Aulos 2008", :year => 2008 }
 ])
+end
 
+if Person.count == 0
 persons = Person.create([
   { :firstname => "Caroline", :lastname => "Krattiger" },
   { :firstname => "Manuela", :lastname => "Scheidegger" },
@@ -48,3 +55,4 @@ persons = Person.create([
   { :firstname => "Rahel", :lastname => "Kohler" },
   { :firstname => "Barbara", :lastname => "Aeschbacher" }
 ])
+end
