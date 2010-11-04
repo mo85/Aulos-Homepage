@@ -1,0 +1,21 @@
+<% if target.size > 0 %>
+	<table class="default">
+		<tr>
+			<th width="70%">Name</th>
+			<th width="30%">Aktion</th>
+		</tr>
+	
+		<% target.each do |m| %>
+			<tr>
+				<td><%= m.person %></td>
+				<td><%= link_to "entfernen" %></td>
+			</tr>
+		<% end %>
+	
+	</table>
+
+<% else %>
+	<p>
+		Für diese Instrument sind zur Zeit keine Mitglieder eingetragen.
+	</p>
+<% end %>

@@ -9,4 +9,8 @@ module ApplicationHelper
     { :prompt => "Bitte auswählen..."}
   end
   
+  def current_project
+    Project.current
+  end
+  
 end

@@ -19,7 +19,17 @@
 		<div class="left">
 			<ul id="header-main-menu">
 				<li class="first"><%= link_to "Home", "/" %></li>
-				<li><%= link_to "Projekte", projects_path %></li>
+				<li><%= link_to "Über uns", about_path %>
+					<ul>
+						<li><%= link_to "Gallerie", gallery_path %></li>
+					</ul>
+				</li>
+				<li><%= link_to "Projekte", projects_path %>
+					<ul>
+						<li><%= link_to "Aktuell", project_path(Project.current) %></li>
+						<li><%= link_to "Archiv", projects_path %></li>
+					</ul>
+				</li>
 				<li>Dirigenten</li>
 				<li>Kontakt
 					<ul>

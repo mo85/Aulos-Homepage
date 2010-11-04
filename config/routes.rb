@@ -73,6 +73,9 @@ Aulos::Application.routes.draw do
   root :to => "root#index"
   
   match 'login' => "admin#login"
+  
+  match "about" => "root#about"
+  match "gallery" => "root#gallery"
 
   # See how all your routes lay out with "rake routes"
 

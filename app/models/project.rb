@@ -10,7 +10,8 @@ class Project < ActiveRecord::Base
   
   default_scope order("year DESC")
 
-  def self.current_project
+  def self.current
+    Project.all.first
   end
   
   def to_s

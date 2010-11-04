@@ -14,17 +14,30 @@
 
 <h2>Besetzung</h2>
 
-<ul>
-<% @project.members.each do |m| %>
-	<li><%= "#{m.person} - #{m.instrument}" %></li>
-<% end %>
-</ul>
+<h3>Klarinette</h3>
+	
+<%= render "members_table", :target => @project.members.clarinets %>
+
+
+<h3>Flöte</h3>
+
+<%= render "members_table", :target => @project.members.flutes %>
+
+<h3>Trompete</h3>
+
+<%= render "members_table", :target => @project.members.trumpets %>
+
+<h3>Saxophon</h3>
+
+<%= render "members_table", :target => @project.members.saxophones %>
+
+
 
 <% content_for :submenu do %>
 
-	<li><%= link_to 'Anpassen', edit_project_path(@project) %></li>
+	<li><%= link_to 'Projekt Details Anpassen', edit_project_path(@project) %></li>
 	<li><%= link_to "Dirigent Hinzufügen" %></li>
 	<li><%= link_to "Mitglied Hinzufügen", add_member_project_path(@project) %></li>
-	<li><%= link_to 'Projekt Übersicht', projects_path %></li>
+	<li><%= link_to 'Alle Projekte', projects_path %></li>
 		
 <% end %>
