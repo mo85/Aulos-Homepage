@@ -6,4 +6,8 @@ class Person < ActiveRecord::Base
     "#{firstname} #{lastname}"
   end
   
+  def last_first
+    "#{lastname} #{firstname}"
+  end
+  
 end

@@ -1,13 +1,13 @@
-<%= form_for(@play) do |f| %>
+<%= form_for(@play, :url => project_plays_path, :html => { :class => :default }) do |f| %>
 	
 	<%= render "shared/error_messages", :target => @play %>
 	
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, "Titel" %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :year %><br />
+    <%= f.label :year, "Jahr" %>
     <%= f.text_field :year %>
   </div>
   <div class="actions">

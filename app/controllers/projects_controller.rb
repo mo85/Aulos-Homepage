@@ -104,6 +104,15 @@ class ProjectsController < ApplicationController
   def remove_member
     @project = Project.find params[:id]
     
+    membership = Membership.find_by_project_id_and_person_id(@project.id, params[:person_id])
+    
+    if membership
+      membership.delete
+      flash[:notice] = "Person wurde enfernt."
+    else
+      flash[:notice] = "Die Person konnte nicht enfernt werden, da sie nicht zum Projekt gehört."
+    end
+    
     respond_to do |format|
       format.html { redirect_to @project }
     end

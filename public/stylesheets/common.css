@@ -4,3 +4,7 @@ div.right {
 div.left {
   float: left;
 }
+
+img {
+	border: none;
+}

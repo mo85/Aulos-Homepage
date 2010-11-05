@@ -13,15 +13,18 @@ Aulos::Application.routes.draw do
     end
   end
 
-  resources :plays
-
   resources :projects do
     member do
       get "add_member"
       post "save_member"
       delete "remove_member"
     end
+    resources :plays do
+      resources :parts
+    end
   end
+  
+  resources :memberships
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

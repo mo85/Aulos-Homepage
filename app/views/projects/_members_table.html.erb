@@ -7,8 +7,10 @@
 	
 		<% target.each do |m| %>
 			<tr>
-				<td><%= m.person %></td>
-				<td><%= link_to "entfernen" %></td>
+				<td><%= m.person.last_first %></td>
+				<td>
+				<%= link_to image_tag("icons/pencil.png", :title => "Anpassen..."), edit_membership_path(m) %>
+				<%= link_to image_tag("icons/cross.png", :title => "Mitglied entfernen?"), remove_member_project_path(m.project, :person_id => m.person.id), :method => :delete %></td>
 			</tr>
 		<% end %>
 	

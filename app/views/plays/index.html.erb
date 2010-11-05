@@ -1,22 +1,8 @@
-<h1>Listing plays</h1>
+<h1>Programm <%= @project %></h1>
 
-<table class="default">
-  <tr>
-    <th>Title</th>
-    <th>Year</th>
-    <th>Action</th>
-  </tr>
+<%= render "plays_table", :target => @project.plays %>
 
-<% @plays.each do |play| %>
-  <tr>
-    <td><%= link_to play.title, play %></td>
-    <td><%= play.year %></td>
-    <td><%= link_to 'Edit', edit_play_path(play) %><br />
-				<%= link_to 'Destroy', play, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% content_for :submenu do %>
+<li><%= link_to 'Stück Hinzufügen', new_project_play_path(@project) %></li>
+<li><%= link_to "Zurück", project_path(@project) %></li>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Play', new_play_path %>

@@ -4,7 +4,7 @@ class PlaysController < ApplicationController
   # GET /plays
   # GET /plays.xml
   def index
-    @plays = Play.all
+    @project = Project.find params[:project_id]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +26,7 @@ class PlaysController < ApplicationController
   # GET /plays/new
   # GET /plays/new.xml
   def new
+    @project = Project.find params[:project_id]
     @play = Play.new
 
     respond_to do |format|

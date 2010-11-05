@@ -15,4 +15,6 @@ class Membership < ActiveRecord::Base
 
   scope :saxophones, includes("instrument").where("instruments.name = ?", "Saxophon")
   
+  default_scope includes("person").order("people.lastname")
+  
 end

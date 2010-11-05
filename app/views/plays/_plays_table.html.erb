@@ -1,0 +1,24 @@
+<p>
+<% if target.size > 0 %>
+	<table class="default">
+		<thead>
+			<tr>
+				<th>Stück</th>
+				<th>Komponist</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% target.each do |p| %>
+				<tr>
+					<td><%= "Symphonie No. 0" %></td>
+					<td><%= "Piqueur" %></td>
+					<td>&nbsp;</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	Das Programm zu diesem Projekt wurde noch nicht erfasst.
+<% end %>
+</p>

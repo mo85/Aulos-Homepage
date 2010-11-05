@@ -2,6 +2,7 @@ authorization do
   role :guest do
     has_permission_on :projects, :people, :to => [:read]
     has_permission_on :orders, :to => [:read, :create, :new]
+    has_permission_on [:plays, :parts], :to => :read
     
   end
   
@@ -10,9 +11,11 @@ authorization do
   end
   
   role :admin do
-    has_permission_on [:users, :orders, :instruments], :to => [:read, :manage]
+    has_permission_on [:users, :orders, :instruments, :plays, :parts], :to => [:read, :manage]
     has_permission_on :projects, :to => [:read, :manage, :manage_members]
     has_permission_on :people, :to => [:read, :manage, :autocomplete]
+    
+    has_permission_on :memberships, :to => :adjust
     includes :user
   end
 end
