@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
     @project = Project.find params[:id]
     
     respond_to do |format|
-      format.html
+      format.js
     end
   end
   

@@ -42,7 +42,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 	<li><%= link_to 'Projekt Details Anpassen', edit_project_path(@project) %></li>
 	<li><%= link_to "Programm", project_plays_path(@project) %>
 	<li><%= link_to "Dirigent Hinzufügen" %></li>
-	<li><%= link_to "Mitglied Hinzufügen", add_member_project_path(@project) %></li>
+	<li><%= link_to_function "Mitglied Hinzufügen", 
+	"Aulos.Popup.init('#{add_member_project_path(@project)}')" %></li>
 	<li><%= link_to 'Alle Projekte', projects_path %></li>
 		
 <% end %>
