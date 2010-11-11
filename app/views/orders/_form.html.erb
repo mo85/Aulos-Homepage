@@ -2,7 +2,7 @@
 
 	<%= render "shared/error_messages", :target => @order %>
 	
-	<% if logged_in? && current_user.is_admin %>
+	<% if user_is_admin? && params[:action] == "edit" %>
 		<div>
 			<%= f.label :state, "Status" %>
 			<%= f.select :state, Order::STATE.collect{|k, v| [v, k]} %>
@@ -40,6 +40,10 @@
     <%= f.label :city, "Ort" %>
     <%= f.text_field :city %>
   </div>
+
+	<div>
+		<%= captcha_block %>
+	</div>
 
   <div>
     <%= f.label :note, "Bemerkung" %>

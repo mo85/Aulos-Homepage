@@ -22,5 +22,8 @@ Aulos::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  CAPTCHA_SALT = "5881b7301936ad0ce15fa67a38f4c802"
+  
 end
 

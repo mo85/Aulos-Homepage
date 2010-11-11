@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
   
+  def user_is_admin?
+    if current_user && current_user.is_admin
+      return true
+    end
+    false
+  end
+  helper_method :user_is_admin?
+  
   def permission_denied
     flash[:error] = "Sorry, you are not allowed to access this page."
     redirect_to root_path

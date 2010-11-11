@@ -11,8 +11,6 @@ gem "declarative_authorization", :git => "git://github.com/stffn/declarative_aut
 
 #gem 'pg'
 
-
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -21,6 +19,8 @@ gem "declarative_authorization", :git => "git://github.com/stffn/declarative_aut
 
 # To use debugger
 #gem 'ruby-debug'
+
+gem "rmagick"
 
 # Bundle the extra gems:
 # gem 'bj'
