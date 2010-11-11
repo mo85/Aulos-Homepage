@@ -46,3 +46,24 @@ div.field_with_errors input {
 	margin-left: 30px;
   font-size: 12px;
 }
+
+.cart-title {
+	font: 120%;
+}
+
+.item-price, .total-line {
+	text-align: right;
+}
+
+.total-line, .total-cell {
+	font-weight: bold;
+	border-top: 1px solid #595;
+}
+
+table.cart {
+	min-width: 250px;
+}
+
+table.cart tr td {
+	padding: 5px;
+}

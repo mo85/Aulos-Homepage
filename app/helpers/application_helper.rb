@@ -13,4 +13,8 @@ module ApplicationHelper
     Project.current
   end
   
+  def number_to_chf number
+    number_to_currency(number, :unit => "CHF ")
+  end
+  
 end

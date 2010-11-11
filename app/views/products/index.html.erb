@@ -1,0 +1,31 @@
+<h1>Verfügbare Produkte</h1>
+
+<table class="default">
+  <tr>
+    <th width="30%">Title</th>
+    <th width="40%">Description</th>
+    <th width="15%">Price</th>
+    <th width="10%">&nbsp;</th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= link_to product.title, product %></td>
+    <td><%= product.description %></td>
+    <td><%= number_to_chf product.price %></td>
+    <td>
+			<% if permitted_to? :manage, :products %>
+    	<%= link_to image_tag("icons/pencil.png"), edit_product_path(product) %>
+ 			<%= link_to image_tag("icons/delete.png"), product, :confirm => 'Are you sure?', :method => :delete %>
+			<% end %>
+		</td>
+  </tr>
+<% end %>
+</table>
+
+
+<% content_for :submenu do %>
+
+<li><%= link_to 'Neues Produkt', new_product_path %></li>
+
+<% end %>

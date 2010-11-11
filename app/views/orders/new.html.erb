@@ -1,3 +1,21 @@
 <h1>Neue Bestellung</h1>
 
+<h2>Warenkorb</h2>
+
+<p>
+	<%= render "carts/show", :cart => @cart %>
+</p>
+
+<p>
+	<%= button_to "Warenkorb löschen", :controller => "carts", :action => "empty_cart" %>
+</p>
+
+<h2>Lieferadresse</h2>
+
+<p>
 <%= render :partial => 'form', :locals => { :label => "Bestellung Abschicken" } %>
+</p>
+
+<% content_for :submenu do %>
+	<li><%= link_to_function "Artikel Hinzufügen...", "Aulos.Popup.init('#{select_products_path}')" %></li>
+<% end %>

@@ -30,7 +30,9 @@ class OrdersController < ApplicationController
   # GET /orders/new.xml
   def new
     @order = Order.new
-
+    
+    @cart = find_cart
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }
@@ -85,5 +87,11 @@ class OrdersController < ApplicationController
       format.html { redirect_to(orders_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def find_cart
+    session[:cart] ||= Cart.new
   end
 end

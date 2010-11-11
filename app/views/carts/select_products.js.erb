@@ -1,0 +1,26 @@
+<h1>Produkt Auswahl</h1>
+
+<p>
+<table class="default">
+	<thead>
+		<tr>
+			<th width="30%">Titel</th>
+			<th width="55%">Beschreibung</th>
+			<th width="10%">Preis</th>
+			<th width="5%">&nbsp;</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<% @products.each do |p| %>
+		<tr>
+			<td><%= p.title %></td>
+			<td><%= p.description %></td>
+			<td><%= number_to_chf(p.price) %></td>
+			<td><%= link_to image_tag("icons/cart_put.png"), add_to_cart_path(:id => p.id) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+</p>

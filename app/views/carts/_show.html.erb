@@ -1,0 +1,22 @@
+<p>
+	
+	<% if cart.items.empty? %>
+		Keine Produkte im Warenkorb.
+	<% else %>
+		
+		<table class="cart">
+			<% cart.items.each do |i| %>
+				<tr>
+					<td><%= i.quantity %>&times;</td>
+					<td><%= i.title %></td>
+					<td class="item-price"><%= number_to_chf i.price %></td>
+				</tr>
+			<% end %>
+			
+			<tr class="total-line">
+				<td colspan="2">Total</td>
+				<td class="total-cell"><%= number_to_chf @cart.total_price %></td>
+			</tr>
+		</table>
+	<% end %>
+</p>

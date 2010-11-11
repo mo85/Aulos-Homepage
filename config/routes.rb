@@ -1,4 +1,6 @@
 Aulos::Application.routes.draw do
+  resources :products
+
   resources :instruments
 
   resources :users
@@ -76,6 +78,9 @@ Aulos::Application.routes.draw do
   root :to => "root#index"
   
   match 'login' => "admin#login"
+  
+  match 'select_products' => "carts#select_products"
+  match 'add_to_cart' => "carts#add_to_cart"
   
   match "about" => "root#about"
   match "gallery" => "root#gallery"
