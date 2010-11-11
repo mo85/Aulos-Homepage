@@ -3,6 +3,9 @@
 <%= render "plays_table", :target => @project.plays %>
 
 <% content_for :submenu do %>
-<li><%= link_to 'Stück Hinzufügen', new_project_play_path(@project) %></li>
+<% if permitted_to? :manage, :plays %>
+	<li><%= link_to 'Stück Hinzufügen', new_project_play_path(@project) %></li>
+<% end %>
+
 <li><%= link_to "Zurück", project_path(@project) %></li>
 <% end %>

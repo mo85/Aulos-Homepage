@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @play %> |
-<%= link_to 'Back', plays_path %>
+<% content_for :submenu do %>
+	<li><%= link_to 'Back', project_plays_path(@project) %></li>
+<% end %>

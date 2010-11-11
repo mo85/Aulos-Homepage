@@ -28,6 +28,7 @@ class PlaysController < ApplicationController
   def new
     @project = Project.find params[:project_id]
     @play = Play.new
+    @composer = Composer.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,16 +39,20 @@ class PlaysController < ApplicationController
   # GET /plays/1/edit
   def edit
     @play = Play.find(params[:id])
+    @project = @play.project
   end
 
   # POST /plays
   # POST /plays.xml
   def create
-    @play = Play.new(params[:play])
+    @project = Project.find params[:project_id]
+    @play = @project.plays.new(params[:play])
+    
+    puts params
 
     respond_to do |format|
       if @play.save
-        format.html { redirect_to(@play, :notice => 'Play was successfully created.') }
+        format.html { redirect_to(@project, :notice => 'Play was successfully created.') }
         format.xml  { render :xml => @play, :status => :created, :location => @play }
       else
         format.html { render :action => "new" }
@@ -76,10 +81,11 @@ class PlaysController < ApplicationController
   # DELETE /plays/1.xml
   def destroy
     @play = Play.find(params[:id])
+    project = @play.project
     @play.destroy
 
     respond_to do |format|
-      format.html { redirect_to(plays_url) }
+      format.html { redirect_to(project_plays_path(project)) }
       format.xml  { head :ok }
     end
   end

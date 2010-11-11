@@ -11,9 +11,14 @@
 		<tbody>
 			<% target.each do |p| %>
 				<tr>
-					<td><%= "Symphonie No. 0" %></td>
-					<td><%= "Piqueur" %></td>
-					<td>&nbsp;</td>
+					<td><%= p.title %></td>
+					<td><%= p.composer %></td>
+					<td>
+						<% if permitted_to? :manage, :plays %>
+						<%= link_to image_tag("icons/pencil.png"), edit_project_play_path(:project_id => p.project.id, :id => p.id) %>
+								<%= link_to image_tag("icons/delete.png"), project_play_path(:project_id => p.project.id, :id => p.id), :confirm => 'Are you sure?', :method => :delete %>
+						<% end %>
+					</td>
 				</tr>
 			<% end %>
 		</tbody>

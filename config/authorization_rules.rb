@@ -11,7 +11,7 @@ authorization do
   end
   
   role :admin do
-    has_permission_on [:users, :orders, :instruments, :plays, :parts], :to => [:read, :manage]
+    has_permission_on [:users, :orders, :instruments, :plays, :parts, :conductors], :to => [:read, :manage]
     has_permission_on :projects, :to => [:read, :manage, :manage_members]
     has_permission_on :people, :to => [:read, :manage, :autocomplete]
     
