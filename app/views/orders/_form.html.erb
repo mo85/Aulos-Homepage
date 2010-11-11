@@ -1,45 +1,52 @@
 <%= form_for(@order, :html => { :class => "default"} ) do |f| %>
 
 	<%= render "shared/error_messages", :target => @order %>
-
+	
+	<% if logged_in? && current_user.is_admin %>
+		<div>
+			<%= f.label :state, "Status" %>
+			<%= f.select :state, Order::STATE.collect{|k, v| [v, k]} %>
+		</div>
+	<% end %>
+	
   <div>
 		<%= mark_required(@order, :firstname) %>
-    <%= f.label :firstname %>
+    <%= f.label :firstname, "Vorname" %>
     <%= f.text_field :firstname %>
   </div>
   <div>
-		<%= mark_required(@order, :firstname) %>
-    <%= f.label :lastname %>
+		<%= mark_required(@order, :lastname) %>
+    <%= f.label :lastname, "Nachname" %>
     <%= f.text_field :lastname %>
   </div>
   <div>
-		<%= mark_required(@order, :firstname) %>
-    <%= f.label :email %>
+		<%= mark_required(@order, :email) %>
+    <%= f.label :email, "Email" %>
     <%= f.text_field :email %>
   </div>
   <div>
-		<%= mark_required(@order, :firstname) %>
-    <%= f.label "Street and Number" %>
+		<%= mark_required(@order, :street) %>
+    <%= f.label :street, "Srasse und Nummer" %>
     <%= f.text_field :street %>
   </div>
 
   <div>
-		<%= mark_required(@order, :firstname) %>
-    <%= f.label :zip %>
+		<%= mark_required(@order, :zip) %>
+    <%= f.label :zip, "PLZ" %>
     <%= f.text_field :zip %>
   </div>
   <div>
-		<%= mark_required(@order, :firstname) %>
-    <%= f.label :city %>
+		<%= mark_required(@order, :city) %>
+    <%= f.label :city, "Ort" %>
     <%= f.text_field :city %>
   </div>
 
   <div>
-    <%= f.label :note %>
+    <%= f.label :note, "Bemerkung" %>
     <%= f.text_area :note %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit label %>
   </div>
 <% end %>

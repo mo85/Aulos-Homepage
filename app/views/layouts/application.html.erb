@@ -37,7 +37,14 @@
 						<li>Gästebuch</li>
 					</ul>
 				</li>
-				<li><%= link_to "CD-Bestellen", orders_path %></li>
+				<li>
+					<%= link_to "CD-Bestellen", new_order_path %>
+					<% if permitted_to? :manage, :orders %>
+					<ul>
+						<li><%= link_to "Bestellliste", orders_path %>
+					</ul>
+					<% end %>
+				</li>
 				<% if permitted_to? :manage, :users %>
 				<li>
 					Admin

@@ -116,3 +116,7 @@ table.stats_table td {
     color: white;
     cursor: pointer;
 }
+
+td.property {
+	font-weight: bold;
+}

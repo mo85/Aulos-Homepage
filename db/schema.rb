@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101104120518) do
+ActiveRecord::Schema.define(:version => 20101111102446) do
 
   create_table "instruments", :force => true do |t|
     t.string   "name"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20101104120518) do
     t.integer  "zip"
     t.string   "city"
     t.string   "country"
-    t.integer  "status"
+    t.integer  "state"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"

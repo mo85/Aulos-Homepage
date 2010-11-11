@@ -1,50 +1,45 @@
+<h1>Details der Bestellung</h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Status:</b>
-  <%= @order.status %>
-</p>
+
+<h2>Lieferadresse</h2>
 
 <p>
-  <b>Note:</b>
-  <%= @order.note %>
+<table class="default">
+
+<tbody>
+	<tr>
+		<td class="property">Name</td>
+		<td><%= @order.customer %></td>
+	</tr>
+	
+	<tr>
+		<td class="property">Email</td>
+		<td><%= @order.email %></td>
+	</tr>
+	
+	<tr>
+		<td class="property">Strasse</td>
+		<td><%= @order.street %></td>
+	</tr>
+	
+	<tr>
+		<td class="property">Ort</td>
+		<td><%= @order.zip_with_city %></td>
+	</tr>
+	
+</tbody>
+
+</table>
+
 </p>
 
-<p>
-  <b>Firstname:</b>
-  <%= @order.firstname %>
-</p>
+<% content_for :submenu do %>
 
-<p>
-  <b>Lastname:</b>
-  <%= @order.lastname %>
-</p>
+	<% if permitted_to? :manage, :orders %>
+		<li><%= link_to 'Anpassen', edit_order_path(@order) %></li>
+		<li><%= link_to 'Zurück', orders_path %></li>
+	<% end %>
 
-<p>
-  <b>Email:</b>
-  <%= @order.email %>
-</p>
-
-<p>
-  <b>Street:</b>
-  <%= @order.street %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @order.zip %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @order.city %>
-</p>
-
-<p>
-  <b>Country:</b>
-  <%= @order.country %>
-</p>
-
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<% end %>

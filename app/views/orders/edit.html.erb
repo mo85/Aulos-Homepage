@@ -1,6 +1,12 @@
-<h1>Editing order</h1>
+<h1>Bestellung Anpassen</h1>
 
-<%= render 'form' %>
+<%= render :partial => 'form', :locals => { :label => "Apassen" } %>
 
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+<% content_for :submenu do %>
+
+	<% if permitted_to? :manage, :orders %>
+		<li><%= link_to 'Details', @order %></li>
+		<li><%= link_to 'Zurück', orders_path %></li>
+		
+	<% end %>
+<% end %>

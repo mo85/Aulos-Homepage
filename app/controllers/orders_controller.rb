@@ -1,3 +1,4 @@
+# encoding: utf-8
 class OrdersController < ApplicationController
   filter_access_to :all
   
@@ -47,11 +48,10 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         OrderMailer.order_confirmation.deliver
-        format.html { redirect_to(@order, :notice => 'Order was successfully created.') }
-        format.xml  { render :xml => @order, :status => :created, :location => @order }
+        flash[:notice] = "Ihre Bestellung wurde registriert. Sie erhalten in Kürze eine Email, in der Sie die Bestellung bestätigen müssen."
+        format.html { redirect_to(@order) }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
       end
     end
   end

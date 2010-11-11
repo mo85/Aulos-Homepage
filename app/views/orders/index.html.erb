@@ -16,11 +16,11 @@
   <tr>
     <td><%= order.customer %></td>
     <td><%= order.email %></td>
-    <td><%= order.street_with_number %></td>
+    <td><%= order.street %></td>
     <td><%= order.zip %></td>
     <td><%= order.city %></td>
     <td><%= order.country %></td>
-    <td><%= order.status %></td>
+    <td><%= order.state %></td>
     <td><%= link_to 'Details', order %><br />
     		<%= link_to 'Anpassen', edit_order_path(order) %><br />
     		<%= link_to 'Löschen', order, :confirm => 'Are you sure?', :method => :delete %></td>

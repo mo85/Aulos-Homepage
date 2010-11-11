@@ -10,9 +10,9 @@ class Order < ActiveRecord::Base
   def customer
     "#{firstname} #{lastname}"
   end
-  
-  def street_with_number
-    "#{street} #{number}"
+    
+  def zip_with_city
+    "#{zip} #{city}"
   end
   
 end
