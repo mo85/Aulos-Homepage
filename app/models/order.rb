@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   
-  validates_presence_of :firstname, :lastname, :email, :zip, :street, :city
+  validates_presence_of :firstname, :lastname, :zip, :street, :city
   validates_numericality_of :zip
   
   validates :email, :presence => true, :email => true

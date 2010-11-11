@@ -10,41 +10,33 @@
 	<% end %>
 	
   <div>
-		<%= mark_required(@order, :firstname) %>
     <%= f.label :firstname, "Vorname" %>
     <%= f.text_field :firstname %>
   </div>
   <div>
-		<%= mark_required(@order, :lastname) %>
     <%= f.label :lastname, "Nachname" %>
     <%= f.text_field :lastname %>
   </div>
   <div>
-		<%= mark_required(@order, :email) %>
     <%= f.label :email, "Email" %>
     <%= f.text_field :email %>
   </div>
   <div>
-		<%= mark_required(@order, :street) %>
     <%= f.label :street, "Srasse und Nummer" %>
     <%= f.text_field :street %>
   </div>
 
   <div>
-		<%= mark_required(@order, :zip) %>
     <%= f.label :zip, "PLZ" %>
     <%= f.text_field :zip %>
   </div>
   <div>
-		<%= mark_required(@order, :city) %>
     <%= f.label :city, "Ort" %>
     <%= f.text_field :city %>
   </div>
 
-	<div>
-		<%= captcha_block %>
-	</div>
-
+	<%= captcha_block %>
+	
   <div>
     <%= f.label :note, "Bemerkung" %>
     <%= f.text_area :note %>

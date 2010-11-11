@@ -2,6 +2,8 @@
 class OrdersController < ApplicationController
   filter_access_to :all
   
+  validates_captcha
+  
   # GET /orders
   # GET /orders.xml
   def index
@@ -46,11 +48,12 @@ class OrdersController < ApplicationController
     @order = Order.new(params[:order])
 
     respond_to do |format|
-      if @order.save
+      if @order.save && captcha_validated?
         OrderMailer.order_confirmation.deliver
         flash[:notice] = "Ihre Bestellung wurde registriert. Sie erhalten in Kürze eine Email, in der Sie die Bestellung bestätigen müssen."
         format.html { redirect_to(@order) }
       else
+        flash[:notice] = "Die Bestellung konnte nicht registriert werden. Bitte überprüfen Sie Ihre Eingaben."
         format.html { render :action => "new" }
       end
     end
