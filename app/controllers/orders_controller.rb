@@ -29,13 +29,21 @@ class OrdersController < ApplicationController
   # GET /orders/new
   # GET /orders/new.xml
   def new
-    @order = Order.new
-    
     @cart = find_cart
     
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @order }
+    if @cart.items.empty?
+      flash[:notice] = "Es befinden sich keine Produkte in Ihrem Warenkorb."
+      if request.env["HTTP_REFERER"]
+        redirect_to :back
+      else
+        redirect_to root_path
+      end
+    else
+      @order = Order.new
+    
+      respond_to do |format|
+        format.html # new.html.erb
+      end
     end
   end
 
@@ -48,9 +56,13 @@ class OrdersController < ApplicationController
   # POST /orders.xml
   def create
     @order = Order.new(params[:order])
-
+    @cart = find_cart
+    
+    @order.add_line_items_from_cart(@cart)
+    
     respond_to do |format|
-      if @order.save && captcha_validated?
+      if captcha_validated? && @order.save
+        delete_cart
         OrderMailer.order_confirmation.deliver
         flash[:notice] = "Ihre Bestellung wurde registriert. Sie erhalten in Kürze eine Email, in der Sie die Bestellung bestätigen müssen."
         format.html { redirect_to(@order) }
@@ -88,10 +100,5 @@ class OrdersController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  private
-  
-  def find_cart
-    session[:cart] ||= Cart.new
-  end
+
 end

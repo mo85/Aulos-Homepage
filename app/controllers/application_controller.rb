@@ -28,4 +28,20 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
   
+  def find_cart
+    # cart_id = session[:cart_id]
+    # if cart_id
+    #   @cart ||= Cart.find cart_id
+    # else
+    #   @cart ||= Cart.create
+    # end
+    session[:cart] ||= Cart.new
+  end
+  helper_method :find_cart
+  
+  def delete_cart
+    session[:cart] = nil
+  end
+  helper_method :delete_cart
+  
 end

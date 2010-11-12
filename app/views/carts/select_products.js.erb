@@ -17,7 +17,12 @@
 			<td><%= p.title %></td>
 			<td><%= p.description %></td>
 			<td><%= number_to_chf(p.price) %></td>
-			<td><%= link_to image_tag("icons/cart_put.png"), add_to_cart_path(:id => p.id) %></td>
+			<td>
+				<%= form_tag({ :action => "add_to_cart" }, :remote => true) do %>
+					<%= hidden_field_tag :id, p.id %>
+					<%= submit_tag "In den Warenkorb" %>
+				<% end %>
+				</td>
 		</tr>
 		<% end %>
 	</tbody>

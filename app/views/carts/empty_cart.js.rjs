@@ -1,0 +1,3 @@
+page.hide("cart")
+
+page.replace_html("cart", "")

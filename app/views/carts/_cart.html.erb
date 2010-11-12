@@ -1,11 +1,12 @@
+<h2>Ihr Warenkorb</h2>
+
 <p>
-	
-	<% if cart.items.empty? %>
+	<% if @cart.items.empty? %>
 		Keine Produkte im Warenkorb.
 	<% else %>
 		
 		<table class="cart">
-			<% cart.items.each do |i| %>
+			<% @cart.items.each do |i| %>
 				<tr>
 					<td><%= i.quantity %>&times;</td>
 					<td><%= i.title %></td>
@@ -19,4 +20,12 @@
 			</tr>
 		</table>
 	<% end %>
+</p>
+
+<p>
+	<%= button_to "Zur Kasse", new_order_path %>
+</p>
+
+<p>
+	<%= button_to "Warenkorb Leeren", { :controller => "carts", :action => "empty_cart" }, :remote => true %>
 </p>

@@ -10,13 +10,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101111153224) do
+ActiveRecord::Schema.define(:version => 20101112153029) do
+
+  create_table "cart_items", :force => true do |t|
+    t.integer "product_id"
+    t.integer "cart_id"
+    t.integer "quantity"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "instruments", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "family"
+  end
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "product_id",                                :null => false
+    t.integer  "order_id",                                  :null => false
+    t.integer  "quantity",                                  :null => false
+    t.decimal  "total_price", :precision => 8, :scale => 2, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "memberships", :force => true do |t|

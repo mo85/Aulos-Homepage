@@ -37,14 +37,7 @@
 						<li>Gästebuch</li>
 					</ul>
 				</li>
-				<li>
-					<%= link_to "CD-Bestellen", new_order_path %>
-					<% if permitted_to? :manage, :orders %>
-					<ul>
-						<li><%= link_to "Bestellungen", orders_path %>
-					</ul>
-					<% end %>
-				</li>
+				<li><%= link_to "CD-Bestellen", products_path %></li>
 				<% if permitted_to? :manage, :users %>
 				<li>
 					Admin
@@ -53,6 +46,7 @@
 						<li><%= link_to "Instrumente", instruments_path %></li>
 						<li><%= link_to "Benutzer Accounts", users_path %></li>
 						<li><%= link_to "Produkte", products_path %></li>
+						<li><%= link_to "Bestellungen", orders_path %></li>
 					</ul>
 					</li>
 				<% end %>
@@ -75,6 +69,18 @@
 	<div id="content">
 		
 		<div class="left-column">
+
+			<% @cart = find_cart %>
+
+				<div id="cart" 
+				<% if @cart.items.empty? %>
+				style="display: none;"
+				<% end %>
+				>
+					<%= render "carts/cart" %>
+				</div>
+
+			
 			<% if yield :submenu %>
 			
 			<ul class="side-menu">

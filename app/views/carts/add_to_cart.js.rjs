@@ -1,0 +1,5 @@
+page.call "Aulos.Popup.close"
+
+page.replace_html("cart", :partial => "cart", :object => @cart )
+
+page.show("cart")

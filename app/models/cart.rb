@@ -1,6 +1,8 @@
 class Cart
   attr_reader :items
   
+  #has_many :cart_items
+  
   def initialize
     @items = []
   end
@@ -17,7 +19,5 @@ class Cart
   def total_price
     @items.sum { |item| item.price }
   end
-  
-  
   
 end

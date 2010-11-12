@@ -4,7 +4,11 @@ class CartsController < ApplicationController
     product = Product.find params[:id]
     @cart = find_cart
     @cart.add_product product
-    redirect_to new_order_path
+    
+    respond_to do |format|
+      format.js
+    end
+    
   rescue ActiveRecord::RecordNotFound
     logger.error("Attempt to access invalid product #{params[:id]}")
     flash[:notice] = "Invalid Product"
@@ -13,8 +17,10 @@ class CartsController < ApplicationController
   
   def empty_cart
     session[:cart] = nil
-    flash[:notice] = "Your cart is currently empty"
-    redirect_to new_order_path
+    
+    respond_to do |format|
+      format.js
+    end
   end
   
   def select_products
@@ -24,11 +30,6 @@ class CartsController < ApplicationController
       format.js
     end
   end
-  
-  private 
-  
-  def find_cart
-    session[:cart] ||= Cart.new
-  end
-  
+
+
 end

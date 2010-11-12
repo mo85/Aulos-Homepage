@@ -6,6 +6,8 @@ class Product < ActiveRecord::Base
   
   validate :price_must_be_at_least_5_cents
   
+  has_many :line_items
+  
   protected
   
   def price_must_be_at_least_5_cents
