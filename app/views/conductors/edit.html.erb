@@ -1,0 +1,7 @@
+<h1>Dirigent Anpassen</h1>
+
+<%= render :partial => "form", :locals => { :target => @conductor, :url => project_conductor_path(:project_id => @project.id, :id => @conductor.id), :label => "Anpassen" } %>
+
+<% content_for :submenu do %>
+	<li><%= link_to "Zurück", project_path(@project) %></li>
+<% end %>

@@ -1,0 +1,13 @@
+<%= form_for(target, :url => url, :html => { :class => "default"}) do |f| %>
+
+<%= render "shared/error_messages", :target => target %>
+
+<%= f.hidden_field :project_id %>
+
+<%= render "people/form_fields", :f => f, :target => target %>
+
+<div>
+	<%= f.submit %>
+</div>
+	
+<% end %>

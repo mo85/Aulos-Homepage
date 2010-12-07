@@ -1,0 +1,7 @@
+<h1>Dirigent erstellen</h1>
+
+<%= render :partial => "form", :locals => { :target => @conductor, :url => project_conductors_path, :label => "Speichern" } %>
+
+<% content_for :submenu do %>
+	<li><%= link_to "Zurück", project_path(@project) %></li>
+<% end %>

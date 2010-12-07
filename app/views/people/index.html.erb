@@ -33,4 +33,6 @@
 
 <br />
 
-<%= link_to 'New Person', new_person_path %>
+<% content_for :submenu do %>
+<li><%= link_to 'Neue Person erfassen', new_person_path %></li>
+<% end %>

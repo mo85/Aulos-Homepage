@@ -1,7 +1,4 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @project.title %></h1>
-
 
 <% if @project.description %>
 <h2>Beschreibung</h2>
@@ -17,6 +14,22 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 </p>
 
 <h2>Besetzung</h2>
+
+<h3>Dirigent</h3>
+
+<p>
+	
+<% if @project.conductor %>
+	
+	<%= link_to @project.conductor, project_conductor_path(:project_id => @project.id, :id => @project.conductor.id) %>
+	
+<% else %>
+
+	Zur Zeit ist noch kein Dirigent für dieses Projekt bestimmt.
+	
+<% end %>
+
+</p>
 
 <h3>Klarinette</h3>
 	
@@ -42,7 +55,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 	<li><%= link_to "Programm", project_plays_path(@project) %>
 	<% if permitted_to? :manage, :projects %>
 		<li><%= link_to 'Projekt Details Anpassen', edit_project_path(@project) %></li>
-		<li><%= link_to "Dirigent Hinzufügen" %></li>
+		<% if @project.conductor %>
+			<li><%= link_to "Dirigent Editieren", edit_project_conductor_path(:project_id => @project.id, :id => @project.conductor.id) %></li>
+		<% else %>
+		<li><%= link_to "Dirigent Hinzufügen", new_project_conductor_path(@project) %></li>
+		<% end %>
+		
 		<li><%= link_to_function "Mitglied Hinzufügen", 
 		"Aulos.Popup.init('#{add_member_project_path(@project)}')" %></li>
 	<% end %>

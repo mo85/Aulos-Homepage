@@ -1,0 +1,8 @@
+<h1><%= @conductor %></h1>
+
+<% content_for :submenu do %>
+	<li><%= link_to "Editieren", edit_project_conductor_path(:project_id => @conductor.project.id, :id => @conductor.id) %></li>
+	<li><%= link_to "Projekt des Dirigenten", project_path(@conductor.project) %></li>
+	<li><%= link_to "Alle Dirigenten", conductors_path %></li>
+	<li><%= link_to "Dirigent löschen", project_conductor_path(:project_id => @conductor.project.id, :id => @conductor.id ), :method => :delete, :confirm => "Soll der Dirigent '#{@conductor}' wirklich gelöscht werden?" %></li>
+<% end %>

@@ -1,0 +1,25 @@
+<h1>Dirigenten des Aulos</h1>
+
+<table class="default">
+	<thead>
+		<th>Jahr</th>
+		<th>Name</th>
+		<th>Email</th>
+		<th>Geburtsdatum</th>
+		<th>Aktion</th>
+	</thead>
+	
+	<tbody>
+		<% @conductors.each do |c| %>
+			<tr>
+				<td><%= c.project.year %></td>
+				<td><%= link_to c, project_conductor_path(:project_id => c.project.id, :id => c.id) %></td>
+				<td><%= c.email %></td>
+				<td><%= c.birthdate_to_s %></td>
+				<td>
+					<%= link_to image_tag("icons/pencil.png"), edit_project_conductor_path(:project_id => c.project.id, :id => c.id) %>
+					<%= link_to image_tag("icons/delete.png"), project_conductor_path(:project_id => c.project.id, :id => c.id ), :method => :delete, :confirm => "Soll der Dirigent '#{c}' wirklich gelöscht werden?" %>
+			</td>
+		<% end %>
+	</tbody>
+</table>

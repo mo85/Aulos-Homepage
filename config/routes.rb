@@ -21,10 +21,16 @@ Aulos::Application.routes.draw do
       post "save_member"
       delete "remove_member"
     end
+    
+    resources :conductors, :except => :index
+    
     resources :plays do
       resources :parts
     end
+    
   end
+  
+  resources :conductors, :only => :index
   
   resources :memberships
   
