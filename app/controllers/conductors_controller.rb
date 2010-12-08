@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ConductorsController < ApplicationController
+  filter_access_to :all
   
   def index
     @conductors = Conductor.all

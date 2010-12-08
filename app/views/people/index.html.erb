@@ -26,7 +26,7 @@
     <td><%= person.city %></td>
     <td><%= person.country %></td>
     <td><%= link_to 'Edit', edit_person_path(person) %><br />
-				<%= link_to 'Destroy', person, :confirm => 'Are you sure?', :method => :delete %></td>
+				<%= link_to 'Destroy', person_path(person), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -1,6 +1,6 @@
 authorization do
   role :guest do
-    has_permission_on :projects, :people, :to => [:read]
+    has_permission_on :projects, :people, :conductors, :to => [:read]
     has_permission_on :orders, :to => [:read, :create, :new]
     has_permission_on [:plays, :parts], :to => :read
   end

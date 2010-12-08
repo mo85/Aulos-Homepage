@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.xml
   def index
-    @people = Person.all
+    @people = (Person.all - Conductor.all)
 
     respond_to do |format|
       format.html # index.html.erb

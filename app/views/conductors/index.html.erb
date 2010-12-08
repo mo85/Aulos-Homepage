@@ -6,7 +6,7 @@
 		<th>Name</th>
 		<th>Email</th>
 		<th>Geburtsdatum</th>
-		<th>Aktion</th>
+		<th>&nbsp;</th>
 	</thead>
 	
 	<tbody>
@@ -17,8 +17,10 @@
 				<td><%= c.email %></td>
 				<td><%= c.birthdate_to_s %></td>
 				<td>
+					<% if permitted_to? :manage, :conductors %>
 					<%= link_to image_tag("icons/pencil.png"), edit_project_conductor_path(:project_id => c.project.id, :id => c.id) %>
 					<%= link_to image_tag("icons/delete.png"), project_conductor_path(:project_id => c.project.id, :id => c.id ), :method => :delete, :confirm => "Soll der Dirigent '#{c}' wirklich gelöscht werden?" %>
+					<% end %>
 			</td>
 		<% end %>
 	</tbody>
