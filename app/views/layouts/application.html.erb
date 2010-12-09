@@ -83,11 +83,19 @@
 			
 			<% if yield :submenu %>
 			
-			<ul class="side-menu">
-				<%= yield :submenu %>
-			</ul>
+			<div class="side-menu actions">
+			
+				<h1>Aktionen</h1>
+				
+				<ul class="side-menu">
+					<%= yield :submenu %>
+				</ul>
+			
+			</div>
 			
 			<% end %>
+			
+			<%= render "shared/side_bar" %>
 			
 		</div>
 		

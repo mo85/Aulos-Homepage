@@ -18,7 +18,7 @@ module ApplicationHelper
   end
   
   def event_date_time_to_s(d)
-    d.strftime("%d. %B %Y - %M:%H")
+    d.strftime("%d. %B %Y - %H:%m")
   end
   
 end

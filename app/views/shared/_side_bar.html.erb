@@ -1,0 +1,14 @@
+<div id="side-bar">
+
+	<h1>News</h1>
+
+	<h2>Nächstes Ereignis</h2>
+	
+	<% @next_event = Event.next_event %>
+	
+	<p>
+		<strong><%= @next_event %></strong><br />
+		<%= event_date_time_to_s(@next_event.start_time) %>
+	</p>
+
+</div>
