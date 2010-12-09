@@ -8,6 +8,9 @@ class RootController < ApplicationController
     
   end
   
+  def contact
+  end
+  
   def gallery
     render :text => "Fotogalerie"
   end

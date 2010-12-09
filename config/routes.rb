@@ -1,4 +1,6 @@
 Aulos::Application.routes.draw do
+  resources :events
+
   resources :products
 
   resources :instruments
@@ -90,6 +92,7 @@ Aulos::Application.routes.draw do
   
   match "about" => "root#about"
   match "gallery" => "root#gallery"
+  match "contact" => "root#contact"
 
   # See how all your routes lay out with "rake routes"
 

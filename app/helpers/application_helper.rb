@@ -17,4 +17,8 @@ module ApplicationHelper
     number_to_currency(number, :unit => "CHF ")
   end
   
+  def event_date_time_to_s(d)
+    d.strftime("%d. %B %Y - %M:%H")
+  end
+  
 end

@@ -1,0 +1,21 @@
+<h1><%= @event.title %></h1>
+
+<p>
+  <b>Start time:</b>
+  <%= event_date_time_to_s(@event.start_time) %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= event_date_time_to_s(@event.end_time) %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @event.note %>
+</p>
+
+<% content_for :submenu do %>
+	<li><%= link_to 'Anpassen', edit_event_path(@event) %></li>
+	<li><%= link_to 'Zurück', events_path %></li>
+<% end %>

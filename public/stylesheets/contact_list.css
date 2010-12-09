@@ -1,0 +1,27 @@
+div .portrait {
+    width: 150px;
+    height: 210px;
+		display: inline;
+}
+
+div .description {
+	display: inline;
+}
+
+div .description ul {
+	list-style-type: none;
+}
+
+div .descrition ul li {
+	list-style-type: none;
+}
+
+div .contact-left-column {
+	float: left;
+	width: 350px;
+}
+
+div .contact-right-column {
+	margin-left: 380px;
+	width: 360px;
+}

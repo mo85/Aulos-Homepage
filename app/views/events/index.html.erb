@@ -1,0 +1,31 @@
+<h1>Verfügbare Events</h1>
+
+<table class="default">
+  <tr>
+    <th>Titel</th>
+    <th>Beginn</th>
+    <th>Ende</th>
+    <th>Location</th>
+    <th>Bemerkung</th>
+    <th width="10%">&nbsp;</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= link_to event.title, event %></td>
+    <td><%= event_date_time_to_s(event.start_time) %></td>
+    <td><%= event_date_time_to_s(event.end_time) %></td>
+    <td><%= "event.location_id" %></td>
+    <td><%= event.note %></td>
+
+    <td>
+    	<%= link_to image_tag("icons/pencil.png"), edit_event_path(event) %>
+    	<%= link_to image_tag("icons/delete.png"), event, :confirm => 'Soll dieses Ereignis wirklich gelöscht werden?', :method => :delete %>
+		</td>
+  </tr>
+<% end %>
+</table>
+
+<% content_for :submenu do %>
+	<li><%= link_to 'Neues Event erstellen', new_event_path %></li>
+<% end %>

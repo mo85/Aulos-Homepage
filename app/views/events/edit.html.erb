@@ -1,0 +1,7 @@
+<h1>Ereignis Anpassen</h1>
+
+<%= render 'form' %>
+
+<% content_for :submenu do %>
+	<li><%= link_to "Zurück", events_path %></li>
+<% end %>
