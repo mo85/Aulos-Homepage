@@ -1,0 +1,7 @@
+<h1>Konzert erfassen</h1>
+
+<%= render 'form', :url => new_project_concert_path(@project), :label => "Konzert Speichern" %>
+
+<% content_for :submenu do %>
+	<li><%= link_to 'Zurück', project_concerts_path(@project) %></li>
+<% end %>

@@ -52,7 +52,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 <% content_for :submenu do %>
 
-	<li><%= link_to "Programm", project_plays_path(@project) %>
+	<li><%= link_to "Programm", project_plays_path(@project) %></li>
+	<li><%= link_to "Konzert Termine", project_concerts_path(@project) %></li>
 	<% if permitted_to? :manage, :projects %>
 		<li><%= link_to 'Projekt Details Anpassen', edit_project_path(@project) %></li>
 		<% if @project.conductor %>

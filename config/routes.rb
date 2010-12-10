@@ -18,6 +18,8 @@ Aulos::Application.routes.draw do
   end
 
   resources :projects do
+    resources :concerts
+    
     member do
       get "add_member"
       post "save_member"

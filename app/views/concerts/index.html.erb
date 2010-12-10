@@ -1,0 +1,18 @@
+<h1>Konzert Termine <%= @project %></h1>
+
+<p>
+<% if @project.concerts.empty? %>
+	Zur Zeit sind noch keine Konzerte für dieses Projekt festgesetzt.
+<% else %>
+	
+	List of Konzerts
+	
+<% end %>
+</p>
+
+<% content_for :submenu do %>
+	<% if permitted_to? :manage, :concerts %>
+		<li><%= link_to 'Konzert erfassen', new_project_concert_path( :project_id => @project.id) %></li>
+	<% end %>
+	<li><%= link_to "Zurück", project_path(@project) %></li>
+<% end %>

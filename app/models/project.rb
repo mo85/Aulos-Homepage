@@ -2,6 +2,8 @@ class Project < ActiveRecord::Base
 
   has_many :plays
   has_many :members, :class_name => "Membership"
+  has_many :events
+  has_many :concerts
   
   has_one :conductor
   

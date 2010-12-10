@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  belongs_to :project
   
   def to_s
     "#{self.title}"
