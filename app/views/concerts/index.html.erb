@@ -1,18 +1,51 @@
 <h1>Konzert Termine <%= @project %></h1>
 
 <p>
-<% if @project.concerts.empty? %>
+<% if @concerts.empty? %>
 	Zur Zeit sind noch keine Konzerte für dieses Projekt festgesetzt.
 <% else %>
 	
-	List of Konzerts
+	<table class="default">
+		<thead>
+			<th>Anlass</th>
+			<th>Zeit</th>
+			<th>Ort</th>
+			<th>&nbsp;</th>
+		</thead>
+		
+		<tbody>
+			<% @concerts.each do |c| %>
+				<tr>
+					<td><%= link_to c, project_concert_path(:project_id => @project.id, :id => c.id) %></td>
+					<td><%= event_date_time_to_s(c.start_time) %></td>
+					<td><%= link_to_function c.location %></td>
+					<td>
+						<% if permitted_to? :manage, :concerts %>
+							<%= link_to image_tag("icons/pencil.png"), edit_project_concert_path(:project_id => @project.id, :id => c.id) %>
+							<%= link_to image_tag("icons/delete.png"), project_concert_path(:project_id => @project.id, :id => c.id), :confirm => 'Are you sure?', :method => :delete %>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+			
+		</tbody>
+			
+	</table>
 	
 <% end %>
+</p>
+
+<p>
+	<h2>Lageplan</h2>
+	
+	<p>
+		Bildli mit de Charte vo de Adrässe...
+	</p>
 </p>
 
 <% content_for :submenu do %>
 	<% if permitted_to? :manage, :concerts %>
 		<li><%= link_to 'Konzert erfassen', new_project_concert_path( :project_id => @project.id) %></li>
 	<% end %>
-	<li><%= link_to "Zurück", project_path(@project) %></li>
+	<li><%= link_to "Zurück zum Projekt", project_path(@project) %></li>
 <% end %>

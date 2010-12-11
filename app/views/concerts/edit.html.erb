@@ -1,6 +1,8 @@
-<h1>Editing concert</h1>
+<h1>Konzert Anpassen</h1>
 
-<%= render 'form' %>
+<%= render 'form' , :url => project_concert_path(:project_id => @project.id, :id => @concert.id), :label => "Konzert Anpassen" %>
 
-<%= link_to 'Show', @concert %> |
-<%= link_to 'Back', concerts_path %>
+<% content_for :submenu do %>
+	<li><%= link_to 'Konzert Anzeigen', project_concert_path(:project_id => @project.id, :id => @concert.id) %></li>
+	<li><%= link_to 'Alle Konzerte', project_concerts_path(:project_id => @project.id) %></li>
+<% end %>

@@ -1,4 +1,5 @@
 <%= form_for(@concert, :url => url, :html => { :class => "default" }) do |f| %>
+	<%= hidden_field :project_id, @project.id %>
   <% if @concert.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@concert.errors.count, "error") %> prohibited this concert from being saved:</h2>

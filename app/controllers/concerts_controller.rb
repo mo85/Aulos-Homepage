@@ -29,6 +29,7 @@ class ConcertsController < ApplicationController
   def new
     @project = Project.find params[:project_id]
     @concert = Concert.new
+    @location = Location.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,16 +40,21 @@ class ConcertsController < ApplicationController
   # GET /concerts/1/edit
   def edit
     @concert = Concert.find(params[:id])
+    @project = Project.find params[:project_id]
   end
 
   # POST /concerts
   # POST /concerts.xml
   def create
+    @project = Project.find params[:project_id]
     @concert = Concert.new(params[:concert])
-
+    @location = Location.new(params[:location])
+    @concert.location = @location
+    @concert.project = @project
+    
     respond_to do |format|
-      if @concert.save
-        format.html { redirect_to(@concert, :notice => 'Concert was successfully created.') }
+      if @location.save && @concert.save
+        format.html { redirect_to(project_concert_path(:project_id => @project.id, :id => @concert), :notice => 'Concert was successfully created.') }
         format.xml  { render :xml => @concert, :status => :created, :location => @concert }
       else
         format.html { render :action => "new" }
@@ -78,9 +84,10 @@ class ConcertsController < ApplicationController
   def destroy
     @concert = Concert.find(params[:id])
     @concert.destroy
+    @project = Project.find params[:project_id]
 
     respond_to do |format|
-      format.html { redirect_to(concerts_url) }
+      format.html { redirect_to(project_concerts_url(@project)) }
       format.xml  { head :ok }
     end
   end

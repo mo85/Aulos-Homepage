@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
   belongs_to :project
+  belongs_to :location
+  
+  validates_presence_of :start_time
   
   def to_s
     "#{self.title}"

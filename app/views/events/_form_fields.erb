@@ -2,6 +2,7 @@
   <%= f.label :title, "Titel" %>
   <%= f.text_field :title %>
 </div>
+
 <div class="field">
   <%= f.label :start_time, "Beginn" %>
   <%= f.datetime_select :start_time %>
@@ -18,4 +19,23 @@
 <div class="field">
   <%= f.label :note, "Bemerkung" %>
   <%= f.text_area :note %>
+</div>
+
+<h2>Ort</h2>
+
+<% location = event.location %>
+
+<div class="field">
+	<%= label_tag "location[street]", "Strasse" %>
+	<%= text_field_tag "location[street]", location ? location.street : nil,:size => 30 %>
+</div>
+
+<div>
+	<%= label_tag "location[zip]", "Postleitzahl" %>
+	<%= text_field_tag "location[zip]", location ? location.zip : nil, :size => 30 %>
+</div>
+
+<div>
+	<%= label_tag "location[city]", "Ort" %>
+	<%= text_field_tag "location[city]", location ? location.city : nil, :size => 30 %>
 </div>

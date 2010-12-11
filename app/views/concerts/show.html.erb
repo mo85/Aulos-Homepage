@@ -1,5 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h1>Konzert Details</h1>
 
+<p>
+	<b>Was:</b><%= @concert.title %><br />
+	<b>Wo:</b><%= @concert.location %><br />
+	<b>Wann:</b><%= event_date_time_to_s(@concert.start_time) %>
+</p>
 
-<%= link_to 'Edit', edit_concert_path(@concert) %> |
-<%= link_to 'Back', concerts_path %>
+<h2>Programm</h2>
+
+<% content_for :submenu do %>
+	<li><%= link_to 'Konzert editieren', edit_project_concert_path(:project_id => @concert.project.id, :id => @concert.id) %></li>
+
+<% end %>
+
