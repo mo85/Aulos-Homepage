@@ -1,4 +1,6 @@
 Aulos::Application.routes.draw do
+  resources :guestnotes
+
   resources :news
 
   resources :events

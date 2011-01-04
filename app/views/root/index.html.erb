@@ -1,11 +1,21 @@
+<% content_for :javascripts do %>
+	<%= javascript_include_tag("tiny_mce/tiny_mce") %>
+<% end %>
+
 <h1>Willkommen auf aulos.ch</h1>
 
+<img class="right-portrait" src="images/aulos_portrait_small.jpg" alt="ochestra in concert" />
+
 <p>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Das aulos Blasorchester trifft sich jährlich und studiert ein anspruchvolles Programm ein. Das Programm besteht vorwiegend aus Originalwerken für symphonisches Blasorchester und wird an vier Konzerten aufgeführt. Im Orchester spielen begabte Amateurmusiker, Musikstudenten und professionelle Musiker aus der ganzen Schweiz.
 </p>
 
 <p>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Die musikalische Leitung obliegt jeweils einem rennomierten Gastdirigenten. So konnte das aulos Blasorchester in den letzten Jahren Dirigenten wie Franco Cesarini, Ludwig Wicki, Andreas Spörri, Jean-François Bobillier und Johan de Meij verpflichten.
+</p>
+
+<p>
+Das aulos 2010 mit Henrie Adams ist bereits Geschichte. Wir freuen uns auf das nächste Projekt unter der Leitung von Bert Appermont. Als besonderen Höhepunkt werden wir die Symphonie Nr. 2 von Bert Appermont uraufführen.
 </p>
 
 <h2>News</h2>
@@ -21,5 +31,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 </p>
 
 <% content_for :submenu do %>
+	<% if permitted_to? :create, :news %>
 	<li><%= link_to_function "News erstellen", "Aulos.Popup.init('#{new_news_path}', {width: 650})" %></li>
+	<% end %>
 <% end %>

@@ -1,0 +1,32 @@
+<% content_for :javascripts do %>
+	<%= javascript_include_tag("tiny_mce/tiny_mce") %>
+<% end %>
+
+<h1>Gästebuch</h1>
+
+<table class="default">
+  <tr>
+    <th>Autor</th>
+    <th>Nachricht</th>
+    <th>Erstellt am</th>
+    <th>&nbsp;</th>
+  </tr>
+
+<% @guestnotes.each do |guestnote| %>
+  <tr>
+    <td><%= guestnote.author %></td>
+    <td><%= sanitize guestnote.message %></td>
+		<td><%= news_date_time_to_s(guestnote.created_at) %></td>
+    <td>
+			<% if permitted_to? :manage, :guestnotes %>
+				<%= link_to_function image_tag("icons/pencil.png"), "Aulos.Popup.init('#{edit_guestnote_path(guestnote)}', { width: 650 })" %>
+    		<%= link_to image_tag("icons/delete.png"), guestnote, :confirm => 'Soll dieser Eintrag wirklich gelöscht werden?', :method => :delete %>
+			<% end %>
+		</td>
+  </tr>
+<% end %>
+</table>
+
+<% content_for :submenu do %>
+	<li><%= link_to_function 'Eintrag erstellen', "Aulos.Popup.init('#{new_guestnote_path}', { width: 650 })" %></li>
+<% end %>

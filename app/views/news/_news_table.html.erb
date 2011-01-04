@@ -10,7 +10,7 @@
 		<% news_entries.each do |n| %>
 			<tr>
 				<td><%= n.user %></td>
-				<td><%= n.message %></td>
+				<td><%= sanitize n.message %></td>
 				<td><%= news_date_time_to_s n.created_at %></td>
 				<td>
 					<% if permitted_to? :manage, :news %>

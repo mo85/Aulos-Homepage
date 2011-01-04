@@ -1,0 +1,22 @@
+<%= form_for(@guestnote, :url => url, :html => { :class => "default" }) do |f| %>
+
+  <div class="field">
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+
+	<% if params[:action] == "new" %>
+		<%= captcha_block %>
+	<% end %>
+
+  <div class="field">
+    <%= f.label :message %>
+    <%= f.text_area :message %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit label %>
+  </div>
+<% end %>
+
+<%= render "shared/tinymce_initializer" %>

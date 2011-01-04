@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+	<%= javascript_include_tag("tiny_mce/tiny_mce") %>
+<% end %>
+
 <h1>News</h1>
 
 <%= render "news_table", :news_entries => @news %>

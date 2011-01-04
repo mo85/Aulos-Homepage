@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Author:</b>
+  <%= @guestnote.author %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @guestnote.message %>
+</p>
+
+
+<%= link_to 'Edit', edit_guestnote_path(@guestnote) %> |
+<%= link_to 'Back', guestnotes_path %>

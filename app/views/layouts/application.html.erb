@@ -4,7 +4,9 @@
   <title>Aulos</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :all %>
-  <%= csrf_meta_tag %>
+  <%= yield :javascripts %>
+	<%= csrf_meta_tag %>
+	
 </head>
 <body onload="DynarchMenu.setup('header-main-menu', { shadows: false, electric: true }); DynarchMenu.setup('header-right-menu', { shadows: false, electric: true });">
 
@@ -33,7 +35,7 @@
 				<li>Kontakt
 					<ul>
 						<li><%= link_to "Vorstand", contact_path %></li>
-						<li>Gästebuch</li>
+						<li><%= link_to "Gästebuch", guestnotes_path %></li>
 					</ul>
 				</li>
 				<li><%= link_to "CD-Bestellen", products_path %></li>
