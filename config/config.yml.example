@@ -1,2 +1,4 @@
 mail:
   order_recipient: "a_valid_mail_address"
+maps:
+  api_key: "your-very-long-api-key"

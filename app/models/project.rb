@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   has_one :conductor
   
   validates_presence_of :year
-  validates_numericality_of :year
+  validates_numericality_of :year, :integer => true, :greater_than => 1985, :less_than => 2100
   
   default_scope order("year DESC")
 

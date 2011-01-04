@@ -1,6 +1,10 @@
-<h1>Editing project</h1>
+<h1>Projekt Anpassen</h1>
 
-<%= render 'form' %>
+<%= render 'form', { :label => "Projekt Anpassen", :url => project_path } %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+<% content_for :submenu do %>
+
+	<li><%= link_to 'Projekt Anzeigen', @project %></li>
+	<li><%= link_to 'Alle Projekte', projects_path %></li>
+
+<% end %>

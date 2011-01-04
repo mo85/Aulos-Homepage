@@ -93,7 +93,6 @@ Aulos::Application.routes.draw do
   match 'add_to_cart' => "carts#add_to_cart"
   
   match "about" => "root#about"
-  match "gallery" => "root#gallery"
   match "contact" => "root#contact"
 
   # See how all your routes lay out with "rake routes"

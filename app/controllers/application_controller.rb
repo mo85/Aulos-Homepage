@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   protected
+  
+  def google_maps_api_key
+    APP_CONFIG["maps"]["api_key"]
+  end
+  helper_method :google_maps_api_key
 
   def logged_in?
     session[:user_id]

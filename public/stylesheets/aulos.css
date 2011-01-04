@@ -47,6 +47,13 @@ div.field_with_errors input {
   font-size: 12px;
 }
 
+
+#map_canvas {
+	margin-top: 20px;
+	height: 400px;
+	width: 560px;
+}
+
 .cart-title {
 	font: 120%;
 }
