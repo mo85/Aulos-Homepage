@@ -18,7 +18,11 @@ module ApplicationHelper
   end
   
   def event_date_time_to_s(d)
-    d.strftime("%d. %B %Y - %H:%m")
+    l(d, :format => "%d. %B %Y - %H:%m")
+  end
+  
+  def news_date_time_to_s(d)
+    l(d, :format => "%d. %B %Y %H:%m")
   end
   
 end

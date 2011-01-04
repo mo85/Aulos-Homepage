@@ -1,0 +1,25 @@
+<table class="default">
+	<thead>
+		<th>Autor</th>
+		<th>Nachricht</th>
+		<th>Erstellt am</th>
+		<th width="10%">&nbsp;</th>
+	</thead>
+	
+	<tbody>
+		<% news_entries.each do |n| %>
+			<tr>
+				<td><%= n.user %></td>
+				<td><%= n.message %></td>
+				<td><%= news_date_time_to_s n.created_at %></td>
+				<td>
+					<% if permitted_to? :manage, :news %>
+						<%= link_to_function image_tag("icons/pencil.png"), "Aulos.Popup.init('#{edit_news_path(n)}', { width: 650})" %>
+						<%= link_to image_tag("icons/delete.png"), n, :method => :delete, :confirm => "Soll der Eintrag wirklich gelöscht werden?"%>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+	
+</table>

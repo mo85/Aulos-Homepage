@@ -1,0 +1,7 @@
+<h1>News</h1>
+
+<%= render "news_table", :news_entries => @news %>
+
+<% content_for :submenu do %>
+	<li><%= link_to_function 'News erstellen', "Aulos.Popup.init('#{new_news_path}', {width: 650})" %></li>
+<% end %>

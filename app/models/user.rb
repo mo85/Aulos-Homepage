@@ -1,7 +1,8 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
-
+  has_many :news
+  
   attr_accessor :password_confirmation
   
   default_scope order('name')

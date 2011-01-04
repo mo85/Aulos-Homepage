@@ -1,0 +1,14 @@
+<%= form_for(@news, :url => url, :html => {:class => "default"}) do |f| %>
+  
+	<div class="field">
+    <%= f.label :message, "Nachricht" %>
+    <%= f.text_area :message %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit label %>
+  </div>
+
+<div></div>
+
+<% end %>
