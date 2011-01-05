@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  filter_access_to :all
+  
   # GET /events
   # GET /events.xml
   def index

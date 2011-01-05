@@ -1,4 +1,5 @@
 class AvatarsController < ApplicationController
+  filter_access_to :all
   
   def new
     @person = Person.find(params[:person_id])

@@ -1,4 +1,6 @@
 class InstrumentsController < ApplicationController
+  filter_access_to :all
+  
   # GET /instruments
   # GET /instruments.xml
   def index

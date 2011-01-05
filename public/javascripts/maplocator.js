@@ -30,16 +30,22 @@ Aulos.Maplocator = {
 		this.map.setCenter(this.marker.getPoint());
 		this.map.addOverlay(this.marker);
 		
-		var html = "<div>";
-		html += "<strong>" + this.name + "</strong><br />";
-		html += this.time + "<br />";
-		html += this.address;
-		html += "</div>";
-		this.openInfoWindow(html);
+		this.addTooltip();
 	},
 	
-	openInfoWindow: function(html) {
+	addTooltip: function() {
+		var html = this.generateTooltip(this.name, this.time, this.address);
 		this.marker.openInfoWindowHtml(html);
+	},
+	
+	generateTooltip: function(name, time, address) {
+		var html = "<div>";
+		html += "<strong>" + name + "</strong><br />";
+		html += time + "<br />";
+		html += address;
+		html += "</div>";
+		
+		return html;
 	}
 	
 };

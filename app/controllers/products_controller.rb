@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  filter_access_to :all
+  
   # GET /products
   # GET /products.xml
   def index
