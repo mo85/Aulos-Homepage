@@ -5,9 +5,7 @@ Einfacher
 ------------------
 - Vorstand/Kontakt Seite
 - conductors#index
-- Geschichte des Aulos => Text von Christoph
-- Googlemaps Marker für Konzert Lokationen (inkl. Tooltips)
-
+- Geschichte des Aulos => Text von Christoph (interimsmässig gemacht)
 
 Umfangreicher
 -------------------
@@ -19,6 +17,9 @@ Umfangreicher
 	=> für Dirigenten: done
 - Fotos für Solisten und Dirigenten
 	=> für Dirigenten: done	
+
+- Conductor => has_many => projects
+=> DB modell anpassen
 
 Design
 ===================

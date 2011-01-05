@@ -18,7 +18,7 @@
 
 <% content_for :submenu do %>
 	<% if permitted_to? :manage, :conductors %>
-	<li><%= link_to_function "Foto hochladen", "Aulos.Popup.init('#{new_person_avatar_path(:person_id => @conductor.id)}')" %></li>
+	<li><%= link_to_function @conductor.avatar ? "Foto ändern" : "Foto hochladen", "Aulos.Popup.init('#{new_person_avatar_path(:person_id => @conductor.id)}')" %></li>
 	<li><%= link_to "Editieren", edit_project_conductor_path(:project_id => @conductor.project.id, :id => @conductor.id) %>
 	</li>
 	<% end %>

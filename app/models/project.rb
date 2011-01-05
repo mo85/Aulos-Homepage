@@ -23,5 +23,9 @@ class Project < ActiveRecord::Base
     end
     s
   end
+  
+  def soloists
+    members.where("soloist == ?", true)
+  end
 
 end

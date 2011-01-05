@@ -22,7 +22,7 @@
 				<tr>
 					<td><%= c %></td>
 					<td><%= event_date_time_to_s(c.start_time) %></td>
-					<td><%= link_to_function c.location, "Aulos.Maplocator.addMarkerToAddress('#{c.location}')" %></td>
+					<td><%= link_to_function c.location, "Aulos.Maplocator.setMarker('Aulos Konzert', '#{event_time_for_tooltip(c.start_time)}','#{c.location.for_tooltip}')" %></td>
 					<td>
 						<% if permitted_to? :manage, :concerts %>
 							<%= link_to image_tag("icons/pencil.png"), edit_project_concert_path(:project_id => @project.id, :id => c.id) %>

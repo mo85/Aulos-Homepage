@@ -8,4 +8,8 @@ class Location < ActiveRecord::Base
     "#{street} #{zip} #{city}"
   end
   
+  def for_tooltip
+    "#{street}, <br /> #{zip} #{city}"
+  end
+  
 end
