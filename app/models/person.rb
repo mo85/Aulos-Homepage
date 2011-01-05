@@ -1,6 +1,7 @@
 class Person < ActiveRecord::Base
 
   has_many :projects, :class_name => "Membership"
+  has_one :avatar
   
   validates_presence_of :firstname, :lastname, :email
 
@@ -17,7 +18,7 @@ class Person < ActiveRecord::Base
   end
   
   def birthdate_to_s
-    birthdate.strftime("%d. %B %Y")
+    I18n.l(birthdate, :format => "%d. %B %Y")
   end
   
 end

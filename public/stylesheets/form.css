@@ -53,3 +53,8 @@ form.default h2 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+textarea.cv {
+	width: 500px !important;
+	height: 400px !important;
+}

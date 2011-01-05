@@ -1,27 +1,37 @@
 <h1>Dirigenten des Aulos</h1>
 
-<table class="default">
+<p>
+	Das aulos Blasorchester konnte in der Vergangenheit einige namhafte Dirigent für sich gewinnen. So leiteten bereits Franco Cesarini, Ludwig Wicki, Andreas Spörri, Jean-François Bobillier oder Johan de Meij das ambitionierte Projektorchester. In der unten stehenden Tabelle sind alle Musiker aufgeführt, die das aulos Blasorchester seit der Gründung im Jahre 1989 geleitet haben. Ein klick auf den entsprechenden Link führt zu weiteren Informationen über die Künstler.
+</p>
+
+<p>
+
+<table class="default" style="margin-left: 10px; width: 400px;">
 	<thead>
+		<th>Dirigent</th>
 		<th>Jahr</th>
-		<th>Name</th>
-		<th>Email</th>
-		<th>Geburtsdatum</th>
 		<th>&nbsp;</th>
 	</thead>
 	
 	<tbody>
 		<% @conductors.each do |c| %>
 			<tr>
-				<td><%= c.project.year %></td>
-				<td><%= link_to c, project_conductor_path(:project_id => c.project.id, :id => c.id) %></td>
-				<td><%= c.email %></td>
-				<td><%= c.birthdate_to_s %></td>
+				<td>
+					<%= link_to c, project_conductor_path(:project_id => c.project.id, :id => c.id) %>
+				</td>
+				<td>
+					<%= c.project.year %>
+				</td>
 				<td>
 					<% if permitted_to? :manage, :conductors %>
-					<%= link_to image_tag("icons/pencil.png"), edit_project_conductor_path(:project_id => c.project.id, :id => c.id) %>
-					<%= link_to image_tag("icons/delete.png"), project_conductor_path(:project_id => c.project.id, :id => c.id ), :method => :delete, :confirm => "Soll der Dirigent '#{c}' wirklich gelöscht werden?" %>
+						<%= link_to image_tag("icons/pencil.png"), edit_project_conductor_path(:project_id => c.project.id, :id => c.id) %>
+						<%= link_to image_tag("icons/delete.png"), project_conductor_path(:project_id => c.project.id, :id => c.id ), :method => :delete, :confirm => "Soll der Dirigent '#{c}' wirklich gelöscht werden?" %>
 					<% end %>
-			</td>
+				</td>
+			</tr>
 		<% end %>
 	</tbody>
+	
 </table>
+	
+</p>

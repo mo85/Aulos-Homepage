@@ -1,3 +1,5 @@
+<% include_tinymce %>
+
 <div>
   <%= f.label :firstname, "Vorname" %>
   <%= f.text_field :firstname %>
@@ -34,6 +36,8 @@
 <% if target.cv_form %>
 <div>
 	<%= f.label :cv, "CV" %>
-	<%= f.text_area :cv %>
+	<%= f.text_area :cv, :class => "cv" %>
 </div>
+
+<%= render "shared/tinymce_initializer" %>
 <% end %>

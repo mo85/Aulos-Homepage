@@ -19,6 +19,8 @@ Aulos::Application.routes.draw do
     collection do
       get "autocomplete"
     end
+    
+    resources :avatars
   end
 
   resources :projects do

@@ -1,0 +1,11 @@
+<h1>Foto hochladen</h1>
+
+<%= form_for(@avatar, :url => person_avatars_path(:person_id => @person.id), :html => { :multipart => true, :class => :default }) do |f| %>
+    
+    <div>
+      <%= f.label :photo, "Datei:" %>
+      <%= f.file_field :photo %>
+    </div>
+
+    <%= submit_tag "Speichern" %>
+<% end %>

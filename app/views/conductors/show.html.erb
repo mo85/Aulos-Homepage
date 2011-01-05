@@ -1,7 +1,24 @@
 <h1><%= @conductor %></h1>
 
+<% if @conductor.cv && !@conductor.cv.blank? %>
+	<% if @conductor.avatar.photo %>
+		<div class="person_pic" style="float: right;">
+      <%= sanitize person_pic(@conductor, nil) %>
+    </div>
+	<% end %>
+	
+	<div>
+		<%= sanitize @conductor.cv %>
+	</div>
+<% else %>
+
+	Für dieses Projekt konnte <%= @conductor %> gewonnen werden. Ein Lebenslauf des Musikers wird in Kürze online gestellt.
+	
+<% end %>
+
 <% content_for :submenu do %>
 	<% if permitted_to? :manage, :conductors %>
+	<li><%= link_to_function "Foto hochladen", "Aulos.Popup.init('#{new_person_avatar_path(:person_id => @conductor.id)}')" %></li>
 	<li><%= link_to "Editieren", edit_project_conductor_path(:project_id => @conductor.project.id, :id => @conductor.id) %>
 	</li>
 	<% end %>

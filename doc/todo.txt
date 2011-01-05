@@ -1,0 +1,44 @@
+Funktionen
+==================
+
+Einfacher
+------------------
+- Vorstand/Kontakt Seite
+- conductors#index
+- Geschichte des Aulos => Text von Christoph
+- Googlemaps Marker für Konzert Lokationen (inkl. Tooltips)
+
+
+Umfangreicher
+-------------------
+- Ganze Stück & Sätze Geschichte (inkl. File Upload => MP3)
+- Bestellungszeug finalisieren
+- Photo Gallerie
+
+- CVs für Solisten und Dirigenten
+	=> für Dirigenten: done
+- Fotos für Solisten und Dirigenten
+	=> für Dirigenten: done	
+
+Design
+===================
+- application design
+- css for tables (news, members, guestnotes, ...)
+
+Diverses
+===================
+- meta tags für Search engines
+- Title attributes for each page
+
+Ideen
+=========================
+- Newsletter für interessierte
+- Event Geschichte => Kalender Integration
+- Kommentare für Events
+- Benutzerprofile
+
+
+Deployment
+=========================
+- Serverwahl => Heroku
+- Seed Daten

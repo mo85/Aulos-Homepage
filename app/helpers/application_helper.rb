@@ -25,4 +25,10 @@ module ApplicationHelper
     l(d, :format => "%d. %B %Y %H:%m")
   end
   
+  def include_tinymce
+    content_for :javascripts do
+      javascript_include_tag("tiny_mce/tiny_mce")
+    end
+  end
+  
 end
