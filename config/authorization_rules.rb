@@ -14,6 +14,8 @@ authorization do
     has_permission_on :projects, :to => [:read, :manage, :manage_members]
     has_permission_on :people, :to => [:read, :manage, :autocomplete]
     
+    has_permission_on :avatars, :to => [:new, :create]
+    
     has_permission_on :memberships, :to => :adjust
     includes :user
   end

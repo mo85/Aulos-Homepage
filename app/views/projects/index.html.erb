@@ -3,20 +3,19 @@
 <table class="default">
   <tr>
     <th width="20%">Projekt</th>
-    <th width="60%">Beschreibung</th>
-    <th width="10%">Jahr</th>
+    <th width="60%">Dirigent</th>
 		<th width="10%">&nbsp;</th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
 		<td><%= link_to project.title, project %></td>
-		<td><%= project.description %></td>
-		<td><%= project.year %></td>		
+		<td><%= link_to "#{project.conductor}", project_conductors_path(:project_id => project.id) %></td>
     <td>
 			<% if permitted_to? :manage, :projects %>
 				<%= link_to image_tag("icons/pencil.png"), edit_project_path(project) %>
-				<%= link_to image_tag("icons/delete.png"), project, :confirm => 'Are you sure?', :method => :delete %>
+				<%= link_to image_tag("icons/delete.png"), 
+							project, :confirm => 'Are you sure?', :method => :delete %>
 			<% else %>
 				&nbsp;
 			<% end %>
@@ -27,7 +26,6 @@
 
 
 <% content_for :submenu do %>
-	
 	<% if permitted_to? :manage, :projects %>
 		<li><%= link_to 'Neues Projekt erstellen', new_project_path %></li>
 	<% end %>
