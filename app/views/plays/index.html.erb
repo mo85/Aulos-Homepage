@@ -1,11 +1,13 @@
 <h1>Programm <%= @project %></h1>
 
-<%= render "plays_table", :target => @project.plays %>
+<%= render "plays_table", :target => @project.plays.order("program_position ASC") %>
 
 <% content_for :submenu do %>
-<% if permitted_to? :manage, :plays %>
-	<li><%= link_to 'Stück Hinzufügen', new_project_play_path(@project) %></li>
-<% end %>
+	<% if permitted_to? :manage, :plays %>
+		<li><%= link_to 'Stück Hinzufügen', new_project_play_path(@project) %></li>
+		<li><%= link_to_function "Programmreihenfolge ändern", 
+		 				"Aulos.Popup.init('#{change_plays_order_project_path(:id => @project.id)}', {width: 650});" %></li>
+	<% end %>
 
-<li><%= link_to "Zurück", project_path(@project) %></li>
+	<li><%= link_to "Zurück", project_path(@project) %></li>
 <% end %>

@@ -5,7 +5,7 @@ class Play < ActiveRecord::Base
   
   has_many :parts
   
-  validates_presence_of :title
+  validates_presence_of :title, :project_id
   validates_numericality_of :year, 
                             :only_integer => true, 
                             :less_than => (Time.now.year + 2), 
@@ -19,5 +19,4 @@ class Play < ActiveRecord::Base
     end
     string
   end
-  
 end

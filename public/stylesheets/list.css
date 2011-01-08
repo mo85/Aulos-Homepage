@@ -9,3 +9,28 @@ ul.side-menu li {
 ul.composer-plays {
 	margin-left: 20px;
 }
+
+
+ul#list-to-order {
+	margin-left: 30px;
+	
+}
+
+ul#list-to-order li {
+	cursor: pointer;
+	padding-left: 20px;
+	list-style: none;
+	display: block;
+	border-bottom: 1px solid #eee;
+	line-height: 4em;
+}
+
+ul#list-to-order li.selected {
+	border: 1px solid navy;
+	background: #eee;
+}
+
+a #list_orderer_up {
+	padding: 20px !important;
+	display: block !important;
+}

@@ -72,6 +72,31 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def change_plays_order
+    @project = Project.find params[:id]
+    @plays = @project.plays
+    
+    respond_to do |format|
+      format.ajax
+    end
+    
+  end
+  
+  def save_plays_order
+    @project = Project.find params[:id]
+    play_ids = params[:program_order].split(",")
+
+    play_ids.each_with_index do |id, index|
+      play = Play.find id
+      play.program_position = index
+      play.save
+    end
+    
+    respond_to do |format|
+      format.html {redirect_to project_plays_path(:project_id => @project.id), :notice => "Reihenfolge geändert." }
+    end
+  end
+  
   def add_member
     @project = Project.find params[:id]
     

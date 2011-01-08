@@ -56,7 +56,7 @@ class PlaysController < ApplicationController
       if @play.valid? && @composer.valid?
         @play.composer = @composer
         @play.save
-        format.html { redirect_to(@project, :notice => 'Stück wurde erfolgreich erstellt.') }
+        format.html { redirect_to(project_plays_path(:project_id => @project.id, :id => @play.id), :notice => 'Stück wurde erfolgreich erstellt.') }
         format.xml  { render :xml => @play, :status => :created, :location => @play }
       else
         format.html { render :action => "new" }

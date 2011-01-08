@@ -30,6 +30,8 @@ Aulos::Application.routes.draw do
       get "add_member"
       post "save_member"
       delete "remove_member"
+      get "change_plays_order"
+      post "save_plays_order"
     end
     
     resources :conductors, :except => :index
