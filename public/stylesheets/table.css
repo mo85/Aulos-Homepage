@@ -120,3 +120,7 @@ table.stats_table td {
 td.property {
 	font-weight: bold;
 }
+
+table.top_vertical_align td {
+	vertical-align: top;
+}

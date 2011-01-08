@@ -5,11 +5,14 @@ Einfacher
 ------------------
 - Vorstand/Kontakt Seite
 - conductors#index
+- project#index
 - Geschichte des Aulos => Text von Christoph (interimsmässig gemacht)
 
 Umfangreicher
 -------------------
 - Ganze Stück & Sätze Geschichte (inkl. File Upload => MP3)
+	Plays#edit, Plays#update
+
 - Bestellungszeug finalisieren
 - Photo Gallerie
 

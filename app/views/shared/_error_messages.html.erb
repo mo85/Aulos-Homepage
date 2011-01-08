@@ -1,11 +1,22 @@
-<% if target.errors.any? %>
+<% if has_errors(target) %>
   <div id="error_explanation">
-    <h2><%= pluralize(target.errors.count, "error") %> prohibited this record from being saved:</h2>
+    <h2><%= pluralize(error_count(target), "error") %> prohibited this record from being saved:</h2>
 
     <ul>
-    <% target.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+		
+		<% if target.is_a? Array %>
+			
+			<% target.each do |t| %>
+				<% t.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+			<% end %>
+		
+		<% else %>
+			<% target.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+		<% end %>		
     </ul>
   </div>
 <% end %>

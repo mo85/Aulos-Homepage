@@ -3,7 +3,7 @@ class Person < ActiveRecord::Base
   has_many :projects, :class_name => "Membership"
   has_one :avatar
   
-  validates_presence_of :firstname, :lastname, :email
+  validates_presence_of :firstname, :lastname
 
   def to_s
     "#{firstname} #{lastname}"

@@ -1,0 +1,17 @@
+<%= form_for @composer, :html => { :class => "default" } do |f| %>
+
+	<div>
+		<%= f.label :firstname, "Vorname" %>
+		<%= f.text_field :firstname %>
+	</div>
+
+	<div>
+		<%= f.label :lastname, "Nachname" %>
+		<%= f.text_field :lastname %>
+	</div>
+	
+	<div class="actions">
+    <%= f.submit label %>
+  </div>
+	
+<% end %>

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PlaysController < ApplicationController
   filter_access_to :all
   
@@ -39,6 +40,7 @@ class PlaysController < ApplicationController
   # GET /plays/1/edit
   def edit
     @play = Play.find(params[:id])
+    @composer = @play.composer
     @project = @play.project
   end
 
@@ -48,11 +50,13 @@ class PlaysController < ApplicationController
     @project = Project.find params[:project_id]
     @play = @project.plays.new(params[:play])
     
-    puts params
-
+    @composer = Composer.find_or_create_instance(params[:composer][:firstname], params[:composer][:lastname])
+    
     respond_to do |format|
-      if @play.save
-        format.html { redirect_to(@project, :notice => 'Play was successfully created.') }
+      if @play.valid? && @composer.valid?
+        @play.composer = @composer
+        @play.save
+        format.html { redirect_to(@project, :notice => 'Stück wurde erfolgreich erstellt.') }
         format.xml  { render :xml => @play, :status => :created, :location => @play }
       else
         format.html { render :action => "new" }
@@ -68,7 +72,7 @@ class PlaysController < ApplicationController
 
     respond_to do |format|
       if @play.update_attributes(params[:play])
-        format.html { redirect_to(@play, :notice => 'Play was successfully updated.') }
+        format.html { redirect_to(@play, :notice => 'Stück wurde erfolgreich angepasst.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,7 +89,7 @@ class PlaysController < ApplicationController
     @play.destroy
 
     respond_to do |format|
-      format.html { redirect_to(project_plays_path(project)) }
+      format.html { redirect_to(project_plays_path(project), :notice => "Stück gelöscht.") }
       format.xml  { head :ok }
     end
   end

@@ -11,7 +11,7 @@
 		<tbody>
 			<% target.each do |p| %>
 				<tr>
-					<td><%= p.title %></td>
+					<td><%= link_to p, project_play_path(:project_id => p.project.id, :id => p.id) %></td>
 					<td><%= p.composer %></td>
 					<td>
 						<% if permitted_to? :manage, :plays %>

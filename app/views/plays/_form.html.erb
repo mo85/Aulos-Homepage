@@ -1,6 +1,6 @@
-<%= form_for(@play, @composer, :url => project_plays_path(@play.project), :html => { :class => :default }) do |f| %>
+<%= form_for(@play, :url => project_plays_path(@play.project), :html => { :class => :default }) do |f| %>
 	
-	<%= render "shared/error_messages", :target => @play %>
+	<%= render "shared/error_messages", :target => [@play, @composer] %>
 
   <div class="field">
     <%= f.label :title, "Titel" %>
@@ -13,17 +13,19 @@
 
 	<h2>Komponist</h2>
 	
+	
+
 	<div>
-		<%= f.label "composer[firstname]", "Vorname" %>
-		<%= text_field_tag "composer[firstname]"  %>
+		<%= label_tag "composer[firstname]", "Vorname" %>
+		<%= text_field_tag "composer[firstname]", @composer.firstname, { :size => "30", :disabled => params[:action] == "edit" ? true : false } %>
 	</div>
 	
 	<div>
 		<%= label_tag "composer[lastname]", "Nachname" %>
-		<%= text_field_tag "composer[lastname]" %>
+		<%= text_field_tag "composer[lastname]", @composer.lastname,  { :size => "30", :disabled => params[:action] == "edit" ? true : false } %>
 	</div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit label %>
   </div>
 <% end %>

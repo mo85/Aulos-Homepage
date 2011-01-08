@@ -5,3 +5,7 @@ ul.side-menu {
 ul.side-menu li {
 	list-style: none;
 }
+
+ul.composer-plays {
+	margin-left: 20px;
+}

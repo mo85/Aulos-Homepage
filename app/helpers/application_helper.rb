@@ -35,4 +35,36 @@ module ApplicationHelper
     end
   end
   
+  def has_errors(object)
+    errors = false
+    if object.is_a? Array
+      object.each do |elem|
+        return true if _has_error(elem)
+      end
+    else
+      errors = _has_error(object)
+    end
+    errors
+  end
+  
+  def error_count(object)
+    count = 0
+    if object.is_a? Array
+      count = object.sum{|e| _error_count(e)}
+    else
+      count = _error_count(object)
+    end
+    count
+  end
+  
+  private
+  
+  def _error_count(o)
+    o.errors.count
+  end
+  
+  def _has_error(o)
+    o.errors.any?
+  end
+  
 end

@@ -1,0 +1,39 @@
+<h1>Komponisten</h1>
+
+<table class="default top_vertical_align">
+	<thead>
+		<th>Name</th>
+		<th>Stücke</th>
+		<th>&nbsp;</th>
+	</thead>
+	
+	<tbody>
+		<% @composers.each do |c| %>
+			<tr>
+				<td><%= c %></td>
+				<td>
+					<% if c.plays.any? %>
+						<ul class="composer-plays">
+							<% c.plays.each do |p| %>
+								<li><%= link_to p, project_play_path(:project_id => p.project.id, :id => p.id) %></li>
+							<% end %>
+						</ul>
+					<% else %>
+						-
+					<% end %>
+				</td>
+				<% if permitted_to? :manage, :composers %>
+					<td>
+						<%= link_to image_tag("icons/pencil.png"), edit_composer_path(c) %>
+						<%= link_to image_tag("icons/delete.png"), c, :confirm => "Möchten Sie diesen Komponisten wirklich löschen?", :method => :delete %>
+					</td>
+				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+	
+</table>
+
+<% content_for :submenu do %>
+	<li><%= link_to "Komponist erstellen", new_composer_path %></li>
+<% end %>

@@ -44,6 +44,8 @@ Aulos::Application.routes.draw do
   
   resources :memberships
   
+  resources :composers
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

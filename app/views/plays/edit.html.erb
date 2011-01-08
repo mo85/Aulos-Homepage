@@ -1,7 +1,7 @@
-<h1>Editing play</h1>
+<h1>Stück anpassen</h1>
 
-<%= render 'form' %>
+<%= render 'form', :label => "Stück aktualisieren" %>
 
 <% content_for :submenu do %>
-	<li><%= link_to 'Back', project_plays_path(@project) %></li>
+	<li><%= link_to 'Zurück', project_plays_path(@project) %></li>
 <% end %>
