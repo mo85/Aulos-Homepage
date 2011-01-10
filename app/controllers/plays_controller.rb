@@ -18,6 +18,7 @@ class PlaysController < ApplicationController
   def show
     @play = Play.find(params[:id])
 
+    @project = @play.project
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @play }
@@ -78,6 +79,24 @@ class PlaysController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @play.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def add_soloist
+    @play = Play.find params[:id]
+    @project = @play.project
+    
+    respond_to do |format|
+      format.ajax
+    end
+  end
+  
+  def save_soloist
+    @play = params[:id]
+    @project = @play.project
+    
+    respond_to do |format|
+      format.html { redirect_to project_play_path(:project_id => @project.id, :id => @play.id) }
     end
   end
 

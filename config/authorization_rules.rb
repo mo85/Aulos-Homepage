@@ -10,12 +10,13 @@ authorization do
   end
   
   role :admin do
-    has_permission_on [:users, :orders, :instruments, :plays, :parts, :products, :news, :guestnotes], :to => [:read, :manage]
+    has_permission_on [:users, :orders, :instruments, :parts, :products, :news, :guestnotes], :to => [:read, :manage]
     has_permission_on [:conductors, :composers], :to => [:read, :manage]
     has_permission_on [:events, :concerts], :to => [:read, :manage]
     
     has_permission_on :projects, :to => [:read, :manage, :manage_members, :change_plays_order, :save_plays_order]
     has_permission_on :people, :to => [:read, :manage, :autocomplete]
+    has_permission_on :plays, :to => [:read, :manage, :add_soloist, :save_soloist]
     
     has_permission_on :avatars, :to => [:new, :create]
     

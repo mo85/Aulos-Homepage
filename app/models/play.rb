@@ -4,6 +4,7 @@ class Play < ActiveRecord::Base
   belongs_to :composer
   
   has_many :parts
+  belongs_to :soloist, :class_name => "Person"
   
   validates_presence_of :title, :project_id
   validates_numericality_of :year, 

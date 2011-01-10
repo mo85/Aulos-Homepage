@@ -2,6 +2,7 @@ class Person < ActiveRecord::Base
 
   has_many :projects, :class_name => "Membership"
   has_one :avatar
+  has_many :solos, :class_name => "Play"
   
   validates_presence_of :firstname, :lastname
 

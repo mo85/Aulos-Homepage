@@ -1,0 +1,26 @@
+<h1>Solist Hinzufügen</h1>
+
+<%= form_tag save_soloist_project_play_path(:project_id => @project.id, :id => @play.id), :class => "default" do %>
+	
+	<%= hidden_field "person", "name" %>
+	
+	<div>
+		<%= label_tag "person", "Mitglied" %>
+		<%= text_field_tag "person", nil, :size => 30 %>
+	</div>
+	
+	<div>
+		<%= label_tag "person[cv]", "Lebenslauf" %>
+		<%= text_area_tag "person[cv]" %>
+		<div id="member_choices" style="display: none;"></div>
+	</div>
+	
+	<div>
+		<%= submit_tag "Solist hinzufügen" %>
+	</div>
+	
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	new Ajax.Autocompleter("person", "member_choices", "/");
+</script>

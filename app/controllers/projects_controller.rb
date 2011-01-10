@@ -82,14 +82,24 @@ class ProjectsController < ApplicationController
     
   end
   
+  def member_autocomplete
+    name = params[:name]
+    
+    respond_to do |format|
+      format.ajax
+    end
+  end
+  
   def save_plays_order
     @project = Project.find params[:id]
     play_ids = params[:program_order].split(",")
 
     play_ids.each_with_index do |id, index|
       play = Play.find id
-      play.program_position = index
-      play.save
+      if play
+        play.program_position = index
+        play.save
+      end
     end
     
     respond_to do |format|

@@ -1,3 +1,5 @@
+<h1>Stück Details</h1>
+
 <p>
   <b>Title:</b>
   <%= @play.title %>
@@ -7,3 +9,10 @@
   <b>Year:</b>
   <%= @play.year %>
 </p>
+
+<% content_for :submenu do %>
+	<% if permitted_to? :add_soloist, :plays %>
+	<li><%= link_to_function "Solist hinzufügen", "Aulos.Popup.init('#{add_soloist_project_play_path(:project_id => @project.id, :id => @play.id)}', { width: 650})" %></li>
+	<% end %>
+	<li><%= link_to "Zurück zum Programm", project_plays_path(:project_id => @project.id) %>
+<% end %>
