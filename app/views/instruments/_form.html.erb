@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name, "Name" %>
     <%= f.text_field :name %>
   </div>
 
 	<div>
-		<%= f.label :family %>
+		<%= f.label :family, "Familie" %>
 		<%= f.select :family, Instrument::FAMILIES.collect{ |v, k| [k, v]}, prompt_for_selects %>
 	</div>
 	
 	
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit label %>
   </div>
 <% end %>

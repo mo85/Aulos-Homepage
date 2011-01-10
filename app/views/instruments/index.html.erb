@@ -4,20 +4,25 @@
   <tr>
     <th>Name</th>
     <th>Family</th>
-    <th></th>
+    <th>&nbsp;</th>
   </tr>
 
 <% @instruments.each do |instrument| %>
   <tr>
     <td><%= instrument.name %></td>
 		<td><%= instrument.family_to_s %></td>
-    <td><%= link_to 'Show', instrument %><br />
-    <%= link_to 'Edit', edit_instrument_path(instrument) %><br />
-    <%= link_to 'Destroy', instrument, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+			<% if permitted_to? :manage, :instruments %>
+	    	<%= link_to image_tag("icons/pencil.png"), edit_instrument_path(instrument) %>
+	    	<%= link_to image_tag("icons/delete.png"), instrument, :confirm => 'Soll dieses Instrument wirklich gelöscht werden?', :method => :delete %>
+			<% end %>
+		</td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Instrument', new_instrument_path %>
+<% content_for :submenu do %>
+<% if permitted_to? :manage, :instruments %>
+	<li><%= link_to 'Neues Instrument erfassen', new_instrument_path %></li>
+<% end %>
+<% end %>

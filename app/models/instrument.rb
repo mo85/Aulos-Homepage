@@ -4,6 +4,8 @@ class Instrument < ActiveRecord::Base
   
   default_scope order("family")
   
+  validates_uniqueness_of :name
+  
   def family_to_s
     ::FAMILIES[self.family]
   end

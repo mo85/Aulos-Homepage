@@ -1,6 +1,7 @@
-<h1>Editing person</h1>
+<h1>Person anpassen</h1>
 
-<%= render 'form' %>
+<%= render 'form', :label => "Person anpassen" %>
 
-<%= link_to 'Show', @person %> |
-<%= link_to 'Back', people_path %>
+<% content_for :submenu do %>
+	<li><%= link_to 'Zurück', people_path %></li>
+<% end %>

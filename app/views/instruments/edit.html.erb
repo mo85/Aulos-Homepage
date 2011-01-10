@@ -1,6 +1,7 @@
-<h1>Editing instrument</h1>
+<h1>Instrument Anpassen</h1>
 
-<%= render 'form' %>
+<%= render 'form', :label => "Instrument anpassen" %>
 
-<%= link_to 'Show', @instrument %> |
-<%= link_to 'Back', instruments_path %>
+<% content_for :submenu do %>
+	<li><%= link_to 'Zurück', instruments_path %></li>
+<% end %>

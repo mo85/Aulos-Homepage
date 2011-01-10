@@ -1,32 +1,29 @@
-<h1>Listing people</h1>
+<h1>Personen</h1>
 
 <table class="default">
   <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Birthdate</th>
+    <th>Name</th>
+    <th>Geburtsdatum</th>
     <th>Email</th>
-    <th>Street</th>
-    <th>Zip</th>
-    <th>City</th>
-    <th>Country</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Strasse</th>
+    <th>PLZ</th>
+    <th>Ort</th>
+    <th>&nbsp;</th>
   </tr>
 
 <% @people.each do |person| %>
   <tr>
-    <td><%= person.firstname %></td>
-    <td><%= person.lastname %></td>
+    <td><%= person %></td>
     <td><%= person.birthdate %></td>
     <td><%= person.email %></td>
     <td><%= person.street %></td>
     <td><%= person.zip %></td>
     <td><%= person.city %></td>
-    <td><%= person.country %></td>
-    <td><%= link_to 'Edit', edit_person_path(person) %><br />
-				<%= link_to 'Destroy', person_path(person), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+			<% if permitted_to? :manage, :people %>
+				<%= link_to image_tag("icons/pencil.png"), edit_person_path(person) %>
+				<%= link_to image_tag("icons/delete.png"), person_path(person), :confirm => 'Soll diese Person wirklich gelöscht werden?', :method => :delete %></td>
+			<% end %>
   </tr>
 <% end %>
 </table>
