@@ -1,6 +1,7 @@
-<h1>Editing user</h1>
+<h1>Benutzer anpassen</h1>
 
-<%= render 'form' %>
+<%= render 'form', :label => "Benutzer anpassen" %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<% content_for :submenu do %>
+	<li><%= link_to 'Back', users_path %></li>
+<% end %>

@@ -1,24 +1,28 @@
-<h1>Listing users</h1>
+<h1>Benutzer Accounts</h1>
 
 <table class="default">
   <tr>
     <th>Name</th>
-		<th>Admin?</th>
-    <th></th>
+		<th>Administrator?</th>
+    <th>&nbsp;</th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
 		<td><%= user.is_admin %></td>
-    <td><%= link_to 'Show', user %><br>
-    		<%= link_to 'Edit', edit_user_path(user) %><br>
-    		<%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
+    <td>
+			<% if permitted_to? :manage, :users %>
+				<%= link_to image_tag("icons/pencil.png"), edit_user_path(user) %>
+    		<%= link_to image_tag("icons/delete.png"), user, :confirm => 'Soll dieser Benutzer wirklich gelöscht werden?', :method => :delete %>
+			<% end %>
 		</td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New User', new_user_path %>
+<% content_for :submenu do %>
+	<% if permitted_to? :manage, :users %>
+		<li><%= link_to 'Benutzer erstellen', new_user_path %></li>
+	<% end %>
+<% end %>
