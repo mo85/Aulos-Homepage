@@ -32,7 +32,7 @@ Aulos::Application.routes.draw do
       delete "remove_member"
       get "change_plays_order"
       post "save_plays_order"
-      get "member_autocomplete"
+      post "autocomplete_members"
     end
     
     resources :conductors, :except => :index

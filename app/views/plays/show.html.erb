@@ -1,18 +1,33 @@
-<h1>Stück Details</h1>
+<% include_tinymce %>
 
-<p>
-  <b>Title:</b>
-  <%= @play.title %>
-</p>
+<% title = @play.title %>
 
-<p>
-  <b>Year:</b>
-  <%= @play.year %>
-</p>
+<% if @play.year %>
+	  <% title += " (#{@play.year})" %>
+<% end %>
+
+<h1><%= title %></h1>
+
+<% if @play.soloist %>
+
+	<h2>Solist: <%= @play.soloist %></h2>
+	
+	<% if @play.soloist.cv %>
+		<% if @play.soloist.avatar && @play.soloist.avatar.photo %>
+			<div class="person_pic" style="float: right;">
+	    	<%= sanitize person_pic(@play.soloist, nil) %>
+	  	</div>
+		<% end %>
+	<div>
+		<%= sanitize @play.soloist.cv %>
+	</div>
+	<% end %>
+<% end %>
 
 <% content_for :submenu do %>
 	<% if permitted_to? :add_soloist, :plays %>
-	<li><%= link_to_function "Solist hinzufügen", "Aulos.Popup.init('#{add_soloist_project_play_path(:project_id => @project.id, :id => @play.id)}', { width: 650})" %></li>
+	<li><%= link_to_function "Solist hinzufügen/bearbeiten", "Aulos.Popup.init('#{add_soloist_project_play_path(:project_id => @project.id, :id => @play.id)}', { width: 650})" %></li>
 	<% end %>
 	<li><%= link_to "Zurück zum Programm", project_plays_path(:project_id => @project.id) %>
 <% end %>
+

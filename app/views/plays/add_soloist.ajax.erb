@@ -1,26 +1,31 @@
-<h1>Solist Hinzufügen</h1>
+<h1>Solist Hinzufügen/Bearbeiten</h1>
 
-<%= form_tag save_soloist_project_play_path(:project_id => @project.id, :id => @play.id), :class => "default" do %>
-	
-	<%= hidden_field "person", "name" %>
+<%= form_tag(save_soloist_project_play_path(:project_id => @project.id, :id => @play.id), :class => "default", :multipart => true ) do %>
 	
 	<div>
-		<%= label_tag "person", "Mitglied" %>
-		<%= text_field_tag "person", nil, :size => 30 %>
+		<%= label_tag "name", "Name" %>
+		<%= text_field_tag "name", @person.name, :class => "autocomplete" %>
 	</div>
 	
 	<div>
 		<%= label_tag "person[cv]", "Lebenslauf" %>
-		<%= text_area_tag "person[cv]" %>
-		<div id="member_choices" style="display: none;"></div>
+		<%= text_area_tag "person[cv]", @person.cv %>
+		<div class="autocomplete" id="member_choices" style="display: none;"></div>
 	</div>
 	
 	<div>
-		<%= submit_tag "Solist hinzufügen" %>
+    <%= label_tag "avatar[photo]", "Foto" %>
+    <%= file_field_tag "avatar[photo]" %>
+  </div>
+	
+	<div>
+		<%= submit_tag "Speichern" %>
 	</div>
 	
 <% end %>
 
+<%= render "shared/tinymce_initializer" %>
+
 <script type="text/javascript" charset="utf-8">
-	new Ajax.Autocompleter("person", "member_choices", "/");
+	new Ajax.Autocompleter("name", "member_choices", "<%= autocomplete_members_project_path(@project) %>");
 </script>

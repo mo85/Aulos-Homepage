@@ -18,8 +18,13 @@ class Person < ActiveRecord::Base
     false
   end
   
+  def name
+    to_s
+  end
+  
   def birthdate_to_s
     I18n.l(birthdate, :format => "%d. %B %Y")
   end
   
 end
+

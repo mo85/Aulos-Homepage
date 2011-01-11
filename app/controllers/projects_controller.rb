@@ -82,8 +82,10 @@ class ProjectsController < ApplicationController
     
   end
   
-  def member_autocomplete
-    name = params[:name]
+  def autocomplete_members
+    name = "%#{params[:name]}%"
+    @project = Project.find params[:id]
+    @members = @project.members.includes("person").where("people.firstname like ? OR people.lastname like ?", name, name).collect(&:person)
     
     respond_to do |format|
       format.ajax

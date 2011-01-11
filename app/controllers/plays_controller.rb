@@ -85,6 +85,8 @@ class PlaysController < ApplicationController
   def add_soloist
     @play = Play.find params[:id]
     @project = @play.project
+    @person = Person.new
+    @person = @play.soloist if @play.soloist
     
     respond_to do |format|
       format.ajax
@@ -92,11 +94,37 @@ class PlaysController < ApplicationController
   end
   
   def save_soloist
-    @play = params[:id]
+    @play = Play.find params[:id]
     @project = @play.project
     
+    @soloist = nil
+    
+    if params[:name]
+      names = params[:name].strip.split(" ")
+      firstname = names[0]
+      lastname = names[1]
+      @soloist = Person.find_by_firstname_and_lastname(firstname, lastname)
+      @play.soloist = @soloist
+      @soloist.update_attributes(params[:person])
+      
+      if params[:avatar] && !params[:avatar][:photo].blank?
+        @soloist.avatar.destroy if @soloist.avatar
+        
+        pic = Avatar.new params[:avatar]
+        pic.person = @soloist
+        pic.save
+      end
+    end 
+    
     respond_to do |format|
-      format.html { redirect_to project_play_path(:project_id => @project.id, :id => @play.id) }
+      format.html do
+        if @soloist && @soloist.save && @play.save
+          notice = "Solist erfolgreich hinzugefügt"
+        else
+          notice = "Solist konnte nicht gefunden werden"
+        end
+        redirect_to(project_play_path(:project_id => @project.id, :id => @play.id), :notice => notice)
+      end
     end
   end
 
