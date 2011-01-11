@@ -24,8 +24,4 @@
 	<% end %>
 	<li><%= link_to "Projekt des Dirigenten", project_path(@conductor.project) %></li>
 	<li><%= link_to "Alle Dirigenten", conductors_path %></li>
-	<% if permitted_to? :destroy, :conductors %>
-	<li><%= link_to "Dirigent löschen", project_conductor_path(:project_id => @conductor.project.id, :id => @conductor.id ), :method => :delete, :confirm => "Soll der Dirigent '#{@conductor}' wirklich gelöscht werden?" %>
-	</li>
-	<% end %>
 <% end %>

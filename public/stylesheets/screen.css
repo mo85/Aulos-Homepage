@@ -63,6 +63,14 @@ div .right-column {
   min-height: 100%;
 }
 
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
 div .clear {
   clear: both;
   height: 1px;

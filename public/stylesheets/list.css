@@ -34,3 +34,8 @@ a #list_orderer_up {
 	padding: 20px !important;
 	display: block !important;
 }
+
+li.parts-list {
+	width: 200px;
+	line-height: 2em;
+}

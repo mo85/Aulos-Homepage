@@ -1,85 +1,80 @@
+# encoding: utf-8
 class PartsController < ApplicationController
   filter_access_to :all
   
-  # GET /parts
-  # GET /parts.xml
   def index
     @parts = Part.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @parts }
     end
   end
 
-  # GET /parts/1
-  # GET /parts/1.xml
   def show
     @part = Part.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @part }
     end
   end
 
-  # GET /parts/new
-  # GET /parts/new.xml
   def new
     @part = Part.new
+    @play = Play.find params[:play_id]
+    @project = @play.project
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @part }
+      format.ajax
     end
   end
 
-  # GET /parts/1/edit
+
   def edit
     @part = Part.find(params[:id])
+    @play = @part.play
+    @project = @play.project
+    
+    respond_to do |format|
+      format.ajax
+    end
   end
 
-  # POST /parts
-  # POST /parts.xml
   def create
     @part = Part.new(params[:part])
+    @play = Play.find params[:play_id]
+    @part.play = @play
 
     respond_to do |format|
       if @part.save
-        format.html { redirect_to(@part, :notice => 'Part was successfully created.') }
-        format.xml  { render :xml => @part, :status => :created, :location => @part }
+        format.html { redirect_to(project_play_path(:project_id => @play.project.id, :id => @play.id), :notice => 'Satz wurde hinzugefügt.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @part.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /parts/1
-  # PUT /parts/1.xml
   def update
     @part = Part.find(params[:id])
+    @play = @part.play
+    @project = @play.project
 
     respond_to do |format|
       if @part.update_attributes(params[:part])
-        format.html { redirect_to(@part, :notice => 'Part was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(project_play_path(:project_id => @play.project.id, :id => @play.id), :notice => 'Satz erfolgreich geändert.') }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @part.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /parts/1
-  # DELETE /parts/1.xml
   def destroy
     @part = Part.find(params[:id])
+    @play = @part.play
+    @project = @play.project
     @part.destroy
 
     respond_to do |format|
-      format.html { redirect_to(parts_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to(project_play_path(:project_id => @play.project.id, :id => @play.id), :notice => "Satz erfolgreich gelöscht.") }
     end
   end
 end

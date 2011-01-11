@@ -1,0 +1,11 @@
+<%= form_for(@part, :url => url, :html => { :class => "default"}) do |f| %>
+	
+  <div class="field">
+    <%= f.label :title, "Titel" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit label %>
+  </div>
+<% end %>

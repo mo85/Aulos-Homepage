@@ -8,6 +8,24 @@
 
 <h1><%= title %></h1>
 
+<% if @play.parts.any? %>
+	<h2>Sätze</h2>
+	
+	<ol style="margin-left: 20px;">
+		<% @play.parts.each do |part| %>
+			<li class="parts-list">
+				<%= part %>
+				<% if permitted_to? :manage, :parts %>
+					<span class="right">
+						<%= link_to_function image_tag("icons/pencil.png"), "Aulos.Popup.init('#{edit_project_play_part_path(:project_id => @project.id, :play_id => @play.id, :id => part.id)}');" %>
+						<%= link_to image_tag("icons/delete.png"), part, :confirm => "Soll dieser Satz wirklich gelöscht werden?", :method => :delete %>
+					</span>
+				<% end %>
+			</li>
+		<% end %>
+	</ol>
+<% end %>
+
 <% if @play.soloist %>
 
 	<h2>Solist: <%= @play.soloist %></h2>
@@ -25,6 +43,12 @@
 <% end %>
 
 <% content_for :submenu do %>
+	<% if permitted_to? :manage, :parts %>
+		<li><%= link_to_function "Satz hinzufügen", "Aulos.Popup.init('#{new_project_play_part_path(:project_id => @project.id, :play_id => @play.id)}')" %></li>
+		<% if @play.parts.any? %>
+			<li><%= link_to_function "Satz Reihenfolge ändern" %></li>
+		<% end %>
+	<% end %>
 	<% if permitted_to? :add_soloist, :plays %>
 	<li><%= link_to_function "Solist hinzufügen/bearbeiten", "Aulos.Popup.init('#{add_soloist_project_play_path(:project_id => @project.id, :id => @play.id)}', { width: 650})" %></li>
 	<% end %>
