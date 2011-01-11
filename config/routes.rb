@@ -42,6 +42,8 @@ Aulos::Application.routes.draw do
       member do 
         get "add_soloist"
         post "save_soloist"
+        get "change_parts_order"
+        post "save_parts_order"
       end
     end
     

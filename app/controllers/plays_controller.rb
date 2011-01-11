@@ -127,6 +127,32 @@ class PlaysController < ApplicationController
       end
     end
   end
+  
+  def change_parts_order
+    @play = Play.find params[:id]
+    @parts = @play.parts
+    
+    respond_to do |format|
+      format.ajax
+    end
+  end
+  
+  def save_parts_order
+    @play = Play.find params[:id]
+    parts_ids = params[:parts_order].split(",")
+
+    parts_ids.each_with_index do |id, index|
+      part = Part.find id
+      if part
+        part.play_position = index
+        part.save
+      end
+    end
+    
+    respond_to do |format|
+      format.html {redirect_to project_play_path(:project_id => @play.project.id, :id => @play.id), :notice => "Reihenfolge geändert." }
+    end
+  end
 
   # DELETE /plays/1
   # DELETE /plays/1.xml

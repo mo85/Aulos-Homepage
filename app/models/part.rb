@@ -3,6 +3,7 @@ class Part < ActiveRecord::Base
   
   validates_presence_of :play_id, :title
   
+  default_scope order("play_position")
   
   def to_s
     title

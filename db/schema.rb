@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110109114811) do
+ActiveRecord::Schema.define(:version => 20110111203215) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "person_id"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20110109114811) do
     t.integer  "play_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "play_position", :default => 999
   end
 
   create_table "people", :force => true do |t|

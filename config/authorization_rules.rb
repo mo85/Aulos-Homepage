@@ -16,7 +16,7 @@ authorization do
     
     has_permission_on :projects, :to => [:read, :manage, :manage_members, :change_plays_order, :save_plays_order, :autocomplete_members]
     has_permission_on :people, :to => [:read, :manage, :autocomplete]
-    has_permission_on :plays, :to => [:read, :manage, :add_soloist, :save_soloist]
+    has_permission_on :plays, :to => [:read, :manage, :add_soloist, :save_soloist, :change_parts_order, :save_parts_order]
     
     has_permission_on :avatars, :to => [:new, :create]
     

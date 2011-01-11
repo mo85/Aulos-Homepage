@@ -17,8 +17,10 @@
 				<%= part %>
 				<% if permitted_to? :manage, :parts %>
 					<span class="right">
-						<%= link_to_function image_tag("icons/pencil.png"), "Aulos.Popup.init('#{edit_project_play_part_path(:project_id => @project.id, :play_id => @play.id, :id => part.id)}');" %>
-						<%= link_to image_tag("icons/delete.png"), part, :confirm => "Soll dieser Satz wirklich gelöscht werden?", :method => :delete %>
+						<%= link_to_function image_tag("icons/pencil.png"), 
+							"Aulos.Popup.init('#{edit_project_play_part_path(:project_id => @project.id, :play_id => @play.id, :id => part.id)}');" %>
+						<%= link_to image_tag("icons/delete.png"), 
+							part, :confirm => "Soll dieser Satz wirklich gelöscht werden?", :method => :delete %>
 					</span>
 				<% end %>
 			</li>
@@ -46,7 +48,7 @@
 	<% if permitted_to? :manage, :parts %>
 		<li><%= link_to_function "Satz hinzufügen", "Aulos.Popup.init('#{new_project_play_part_path(:project_id => @project.id, :play_id => @play.id)}')" %></li>
 		<% if @play.parts.any? %>
-			<li><%= link_to_function "Satz Reihenfolge ändern" %></li>
+			<li><%= link_to_function "Satz Reihenfolge ändern", "Aulos.Popup.init('#{change_parts_order_project_play_path(:project_id => @project.id, :id => @play.id)}', { width: 650 })" %></li>
 		<% end %>
 	<% end %>
 	<% if permitted_to? :add_soloist, :plays %>
