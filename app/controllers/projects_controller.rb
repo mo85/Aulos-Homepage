@@ -94,7 +94,7 @@ class ProjectsController < ApplicationController
   
   def save_plays_order
     @project = Project.find params[:id]
-    play_ids = params[:program_order].split(",")
+    play_ids = params[:order].split(",")
 
     play_ids.each_with_index do |id, index|
       play = Play.find id

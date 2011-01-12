@@ -1,37 +1,3 @@
 <h1>Programmreihenfolge Ändern</h1>
 
-<div class="left" style="width: 100px;">
-	
-	<div class="list-orderer up"><%= link_to "Up", "#", :id => "list_orderer_up", :style => "padding: 20px; display: block;" %></div>
-	
-	<div class="list-orderer down"><%= link_to "Down", "#", :id => "list_orderer_down", :style => "padding: 20px; display: block;" %></div>
-	
-</div>
-
-<div style="margin-left: 100px;">
-	<ul id="list-to-order">
-		<% @plays.each do |p| %>
-			<li title="<%= p.id %>"><%= p %></li>
-		<% end %>
-	</ul>
-</div>
-
-
-<div class="clear"></div>
-	
-	
-<div style="text-align: right; margin-top: 20px;">
-<%= form_tag save_plays_order_project_path, :onsubmit => "Aulos.Listorderer.generateOrderForInput('program_order');" do %>
-	<%= hidden_field_tag "program_order" %>
-
-	<%= submit_tag "Speichern" %>
-	
-<% end %>
-</div>
-
-
-<script type="text/javascript" charset="utf-8">
-	Aulos.Listorderer.init('list-to-order');
-	$('list_orderer_up').observe("click", function() { Aulos.Listorderer.moveElementUp()});
-	$('list_orderer_down').observe("click", function() {Aulos.Listorderer.moveElementDown()});
-</script>
+<%= render "/shared/list_orderer", :url => save_plays_order_project_path, :list => @plays %>

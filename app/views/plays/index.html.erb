@@ -5,8 +5,10 @@
 <% content_for :submenu do %>
 	<% if permitted_to? :manage, :plays %>
 		<li><%= link_to 'Stück Hinzufügen', new_project_play_path(@project) %></li>
-		<li><%= link_to_function "Programmreihenfolge ändern", 
+		<% if @project.plays.any? %>
+			<li><%= link_to_function "Programmreihenfolge ändern", 
 		 				"Aulos.Popup.init('#{change_plays_order_project_path(:id => @project.id)}', {width: 650});" %></li>
+		<% end %>
 	<% end %>
 
 	<li><%= link_to "Zurück zum Projekt", project_path(@project) %></li>

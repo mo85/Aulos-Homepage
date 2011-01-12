@@ -139,7 +139,7 @@ class PlaysController < ApplicationController
   
   def save_parts_order
     @play = Play.find params[:id]
-    parts_ids = params[:parts_order].split(",")
+    parts_ids = params[:order].split(",")
 
     parts_ids.each_with_index do |id, index|
       part = Part.find id
