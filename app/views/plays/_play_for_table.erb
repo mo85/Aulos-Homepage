@@ -1,0 +1,9 @@
+<%= link_to play, project_play_path(:project_id => play.project.id, :id => play.id) %>
+
+<% if play.parts.any? %>
+	<ol style="margin-left: 35px; margin-top: 2px;">
+		<% play.parts.each do |part| %>
+			<li><%= part %></li>
+		<% end %>
+	</ol>
+<% end %>

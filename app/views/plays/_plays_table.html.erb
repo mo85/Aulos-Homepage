@@ -1,6 +1,6 @@
 <p>
 <% if target.size > 0 %>
-	<table class="default">
+	<table class="default top_vertical_align">
 		<thead>
 			<tr>
 				<th>Stück</th>
@@ -12,7 +12,7 @@
 		<tbody>
 			<% target.each do |p| %>
 				<tr>
-					<td><%= link_to p, project_play_path(:project_id => p.project.id, :id => p.id) %></td>
+					<td><%= render "play_for_table", :play => p %></td>
 					<td><%= p.composer %></td>
 					<td><%= p.soloist ? "Solist: #{p.soloist}" : "" %></td>
 					<td>
