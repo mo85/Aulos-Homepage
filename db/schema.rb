@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110111203215) do
+ActiveRecord::Schema.define(:version => 20110112070225) do
+
+  create_table "audio_tracks", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.string   "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
 
   create_table "avatars", :force => true do |t|
     t.integer  "person_id"

@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   has_many :members, :class_name => "Membership"
   has_many :events
   has_many :concerts
+  has_many :audio_tracks
   
   has_one :conductor
   

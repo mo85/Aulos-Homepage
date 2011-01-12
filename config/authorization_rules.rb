@@ -6,7 +6,8 @@ authorization do
   end
   
   role :user do
-    includes :guest    
+    includes :guest
+    has_permission_on :audio_tracks, :to => :read
   end
   
   role :admin do
@@ -19,6 +20,8 @@ authorization do
     has_permission_on :plays, :to => [:read, :manage, :add_soloist, :save_soloist, :change_parts_order, :save_parts_order]
     
     has_permission_on :avatars, :to => [:new, :create]
+    
+    has_permission_on :audio_tracks, :to => [:manage]
     
     has_permission_on :memberships, :to => :adjust
     includes :user

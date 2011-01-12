@@ -2,6 +2,23 @@
 
 <%= render "plays_table", :target => @project.plays.order("program_position ASC") %>
 
+<% if permitted_to? :read, :audio_tracks %>
+	<% if @project.audio_tracks.any? %>
+		<h2>Hörproben</h2>
+	
+		<p>
+			<ul style="margin-left: 20px;">
+				<% @project.audio_tracks.each do |t| %>
+					<li style="width: 200px;">
+						<%= link_to t, t.file.url %>
+						<span class="right"><%= link_to image_tag("icons/delete.png"), { :controller => "audio_tracks", :action => "destroy", :id => t.id }, :confirm => "Soll diese Datei wirklich gelöscht werden?", :method => :delete %></span>
+					</li>
+				<% end %>
+			</ul>
+		</p>
+	<% end %>
+<% end %>
+
 <% content_for :submenu do %>
 	<% if permitted_to? :manage, :plays %>
 		<li><%= link_to 'Stück Hinzufügen', new_project_play_path(@project) %></li>
@@ -9,6 +26,10 @@
 			<li><%= link_to_function "Programmreihenfolge ändern", 
 		 				"Aulos.Popup.init('#{change_plays_order_project_path(:id => @project.id)}', {width: 650});" %></li>
 		<% end %>
+	<% end %>
+
+	<% if permitted_to? :create, :audio_tracks %>
+		<li><%= link_to_function "Hörprobe Hinzufügen", "Aulos.Popup.init('#{new_project_audio_track_path}')" %></li>
 	<% end %>
 
 	<li><%= link_to "Zurück zum Projekt", project_path(@project) %></li>

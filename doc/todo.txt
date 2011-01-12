@@ -7,8 +7,7 @@ Einfacher
 
 Umfangreicher
 -------------------
--  File Upload für MP3's
-	Plays#edit, Plays#update
+- Plays#edit, Plays#update
 
 - Bestellungszeug finalisieren
 

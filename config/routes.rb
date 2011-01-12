@@ -25,6 +25,7 @@ Aulos::Application.routes.draw do
 
   resources :projects do
     resources :concerts
+    resources :audio_tracks, :only => [:new, :create]
     
     member do
       get "add_member"

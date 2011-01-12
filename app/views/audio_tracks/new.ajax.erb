@@ -1,0 +1,19 @@
+<h1>Audiofile hochladen</h1>
+
+<%= form_for @track, :url => project_audio_tracks_path, :html => { :class => "default", :multipart => true } do |f| %>
+	
+	<div>
+		<%= f.label :name, "Name" %>
+		<%= f.text_field :name %>
+	</div>
+	
+	<div>
+		<%= f.label :file, "Datei" %>
+		<%= f.file_field :file %>
+	</div>
+	
+	<div>
+		<%= f.submit "Speichern" %>
+	</div>
+	
+<% end %>
