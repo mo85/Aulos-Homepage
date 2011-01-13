@@ -1,4 +1,4 @@
-<h1>Personen</h1>
+<h1>Instrumentalisten</h1>
 
 <table class="default">
   <tr>
@@ -20,9 +20,9 @@
     <td><%= person.zip %></td>
     <td><%= person.city %></td>
     <td>
-			<% if permitted_to? :manage, :people %>
-				<%= link_to image_tag("icons/pencil.png"), edit_person_path(person) %>
-				<%= link_to image_tag("icons/delete.png"), person_path(person), :confirm => 'Soll diese Person wirklich gelöscht werden?', :method => :delete %></td>
+			<% if permitted_to? :manage, :instrumentalists %>
+				<%= link_to image_tag("icons/pencil.png"), edit_instrumentalist_path(person) %>
+				<%= link_to image_tag("icons/delete.png"), instrumentalist_path(person), :confirm => 'Soll diese Person wirklich gelöscht werden?', :method => :delete %></td>
 			<% end %>
   </tr>
 <% end %>
@@ -31,5 +31,5 @@
 <br />
 
 <% content_for :submenu do %>
-<li><%= link_to 'Neue Person erfassen', new_person_path %></li>
+<li><%= link_to 'Instrumentalist erfassen', new_instrumentalist_path %></li>
 <% end %>

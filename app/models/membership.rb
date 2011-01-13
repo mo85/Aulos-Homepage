@@ -1,10 +1,10 @@
 # encoding: utf-8 
 class Membership < ActiveRecord::Base
-  belongs_to :person
+  belongs_to :instrumentalist
   belongs_to :project
   belongs_to :instrument
   
-  validates_presence_of :person_id
+  validates_presence_of :instrumentalist_id
   validates_presence_of :project_id
   
   scope :clarinets, includes("instrument").where("instruments.name = ?", "Klarinette")
@@ -15,6 +15,6 @@ class Membership < ActiveRecord::Base
 
   scope :saxophones, includes("instrument").where("instruments.name = ?", "Saxophon")
   
-  default_scope includes("person").order("people.lastname")
+  default_scope includes("instrumentalist").order("people.lastname")
   
 end

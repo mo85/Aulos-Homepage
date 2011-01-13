@@ -30,8 +30,8 @@ projects = Project.create([
 ])
 end
 
-if Person.count == 0
-persons = Person.create([
+if Instrumentalist.count == 0
+persons = Instrumentalist.create([
   { :firstname => "Caroline", :lastname => "Krattiger" },
   { :firstname => "Manuela", :lastname => "Scheidegger" },
   

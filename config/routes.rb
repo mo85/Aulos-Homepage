@@ -22,6 +22,9 @@ Aulos::Application.routes.draw do
     
     resources :avatars
   end
+  
+  resources :instrumentalists do
+  end
 
   resources :projects do
     resources :concerts

@@ -7,8 +7,6 @@ Einfacher
 
 Umfangreicher
 -------------------
-- Plays#edit, Plays#update
-
 - Bestellungszeug finalisieren
 
 

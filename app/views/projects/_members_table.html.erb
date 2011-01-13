@@ -7,12 +7,12 @@
 	
 		<% target.each do |m| %>
 			<tr>
-				<td><%= m.person.last_first %></td>
+				<td><%= m.instrumentalist.last_first %></td>
 				<td>
 					<% if permitted_to? :manage_members, :projects %>
 				
 						<%= link_to image_tag("icons/pencil.png", :title => "Anpassen..."), edit_membership_path(m) %>
-						<%= link_to image_tag("icons/cross.png", :title => "Mitglied entfernen?"), remove_member_project_path(m.project, :person_id => m.person.id), :method => :delete, :confirm => "Soll #{m.person} von diesem Projekt entfernt werden?" %>
+						<%= link_to image_tag("icons/cross.png", :title => "Mitglied entfernen?"), remove_member_project_path(m.project, :person_id => m.instrumentalist.id), :method => :delete, :confirm => "Soll #{m.instrumentalist} von diesem Projekt entfernt werden?" %>
 					<% else %>
 					&nbsp;
 					<% end %>

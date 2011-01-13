@@ -26,5 +26,9 @@ class Person < ActiveRecord::Base
     I18n.l(birthdate, :format => "%d. %B %Y")
   end
   
+  #def initialize
+   # raise "Cannot instantiate Person"
+  #end
+  
 end
 
