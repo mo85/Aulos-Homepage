@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ConcertsController < ApplicationController
   filter_access_to :all
   
@@ -54,7 +55,7 @@ class ConcertsController < ApplicationController
     
     respond_to do |format|
       if @location.save && @concert.save
-        format.html { redirect_to(project_concert_path(:project_id => @project.id, :id => @concert), :notice => 'Concert was successfully created.') }
+        format.html { redirect_to(project_concerts_path(:project_id => @project.id), :notice => 'Konzert erfolgreich erstellt.') }
         format.xml  { render :xml => @concert, :status => :created, :location => @concert }
       else
         format.html { render :action => "new" }
@@ -67,10 +68,11 @@ class ConcertsController < ApplicationController
   # PUT /concerts/1.xml
   def update
     @concert = Concert.find(params[:id])
+    @project = @concert.project
 
     respond_to do |format|
       if @concert.update_attributes(params[:concert])
-        format.html { redirect_to(@concert, :notice => 'Concert was successfully updated.') }
+        format.html { redirect_to(project_concerts_path(@project), :notice => 'Konzert erfolgreich angepasst.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -87,7 +89,7 @@ class ConcertsController < ApplicationController
     @project = Project.find params[:project_id]
 
     respond_to do |format|
-      format.html { redirect_to(project_concerts_url(@project)) }
+      format.html { redirect_to(project_concerts_url(@project), :notice => "Konzert gelöscht.") }
       format.xml  { head :ok }
     end
   end

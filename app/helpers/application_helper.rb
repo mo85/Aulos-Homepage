@@ -18,15 +18,15 @@ module ApplicationHelper
   end
   
   def event_date_time_to_s(d)
-    l(d, :format => "%d. %B %Y - %H:%m")
+    l(d, :format => "%d. %B %Y, %H:%M")
   end
   
   def event_time_for_tooltip(d)
-    l(d, :format => "%d. %B %Y, %H:%m Uhr")
+    l(d, :format => "%d. %B %Y, %H:%M Uhr")
   end
   
   def news_date_time_to_s(d)
-    l(d, :format => "%d. %B %Y %H:%m")
+    l(d, :format => "%d. %B %Y %H:%M")
   end
   
   def include_tinymce

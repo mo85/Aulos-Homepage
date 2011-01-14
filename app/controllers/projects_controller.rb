@@ -104,12 +104,12 @@ class ProjectsController < ApplicationController
     firstname = name[0]
     lastname = name[1]
     
-    person = Person.find_by_firstname_and_lastname(firstname, lastname)
+    person = Instrumentalist.find_by_firstname_and_lastname(firstname, lastname)
     @project = Project.find params[:id]
     
     respond_to do |format|
       if person
-        membership = Membership.create(:person => person, :project => @project, :instrument_id => params[:membership][:instrument_id])
+        membership = Membership.create(:instrumentalist => person, :project => @project, :instrument_id => params[:membership][:instrument_id])
         flash[:notice] = "Die Person #{person} wurde hinzugefügt."
         format.html { redirect_to @project }
       else
@@ -123,7 +123,7 @@ class ProjectsController < ApplicationController
   def remove_member
     @project = Project.find params[:id]
     
-    membership = Membership.find_by_project_id_and_person_id(@project.id, params[:person_id])
+    membership = Membership.find_by_project_id_and_instrumentalist_id(@project.id, params[:instrumentalist_id])
     
     if membership
       membership.delete

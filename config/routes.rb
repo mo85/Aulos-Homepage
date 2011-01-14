@@ -16,14 +16,13 @@ Aulos::Application.routes.draw do
   resources :parts
 
   resources :people do
-    collection do
-      get "autocomplete"
-    end
-    
     resources :avatars
   end
   
   resources :instrumentalists do
+    collection do
+      get "autocomplete"
+    end
   end
 
   resources :projects do

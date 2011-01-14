@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_is_admin?
   
   def permission_denied
-    flash[:error] = "Sorry, you are not allowed to access this page."
+    flash[:notice] = "Sie besitzen nicht die erforderlichen Rechte um diese Seite zu sehen."
     redirect_to root_path
   end
   
